@@ -5,7 +5,7 @@
             "name": "Launch Program",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/src/bleh.exe",
+            "program": "${workspaceFolder}/src/blehEngine.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}", 

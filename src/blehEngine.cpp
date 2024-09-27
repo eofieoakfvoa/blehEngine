@@ -2,6 +2,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "blehEngine.h"
+
+
 using std::cout;
 using std::endl;
 
@@ -11,12 +14,24 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
-int main()
+
+void blehEngine::GameLoop(GLFWwindow* window)
+{
+    while (!glfwWindowShouldClose(window))
+    {
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+}
+
+void blehEngine::Initialize()
 {
     if (!glfwInit())
     {
         cout << "Failed to initialize GLFW" << endl;
-        return -1;
+        return;
     }
     glfwWindowHint(GLFW_SAMPLES, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -27,7 +42,8 @@ int main()
     if (window == NULL)
     {
         cout << "Failed to open GLFW window" << endl;
-        return -1;
+        glfwTerminate();
+        return;
     }
     
     glfwMakeContextCurrent(window);
@@ -36,20 +52,23 @@ int main()
     {
         cout << "Failed to initialize GLAD" << endl;
         glfwTerminate();
-        return -1;
+        return;
     }
     
     glViewport(0, 0, 800, 600);
     
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    while (!glfwWindowShouldClose(window))
-    {
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
+    GameLoop(window);
+    glfwDestroyWindow(window);
     glfwTerminate();
+}
+
+
+
+int main()
+{
+    blehEngine bleh;
+    bleh.Initialize();
     return 0;
 }
