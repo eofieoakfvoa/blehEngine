@@ -1,20 +1,22 @@
-#include "glad.h"
+#pragma once
+#include "glad\glad.h"
 
 class VertexBufferObject
 {
-    private:
-        unsigned int _rendererID;
-    public:
-        VertexBufferObject(const void *Data, unsigned int Size);
-        ~VertexBufferObject();
+private:
+    unsigned int _rendererID;
+
+public:
+    VertexBufferObject(float* vertices, unsigned int Size);
+    ~VertexBufferObject();
 };
 
-class IndexBufferObject
+class ElementBufferObject
 {
-    private:
-        unsigned int _rendererID;
-    public:
-        IndexBufferObject(const void *Data, unsigned int Size);
-        ~IndexBufferObject();
+private:
+    unsigned int _rendererID;
 
+public:
+    ElementBufferObject(unsigned int* Indices, unsigned int Size);
+    ~ElementBufferObject();
 };

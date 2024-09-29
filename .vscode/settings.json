@@ -51,6 +51,12 @@
         "text_encoding": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "sstream": "cpp",
+        "cstring": "cpp",
+        "buffer": "cpp",
+        "netfwd": "cpp",
+        "ratio": "cpp",
+        "fstream": "cpp"
     }
 }

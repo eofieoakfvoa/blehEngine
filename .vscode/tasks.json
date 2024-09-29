@@ -11,6 +11,7 @@
                 "-I./vendors",
                 "-L./lib",
                 "${workspaceFolder}/src/*.cpp",
+                "${workspaceFolder}/src/renderer/*.cpp",
                 "${workspaceFolder}/src/glad.c",
                 "-lglfw3dll",
                 "-o",

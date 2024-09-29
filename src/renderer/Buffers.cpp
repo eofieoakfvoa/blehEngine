@@ -13,12 +13,12 @@
 
 
 
-VertexBufferObject::VertexBufferObject(const void* Data, unsigned int Size)
+VertexBufferObject::VertexBufferObject(float* vertices, unsigned int Size)
     : _rendererID(0)
 {
     glGenBuffers(1, &_rendererID);
     glBindBuffer(GL_ARRAY_BUFFER, _rendererID);
-    glBufferData(GL_ARRAY_BUFFER, Size, Data, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, Size, vertices, GL_STATIC_DRAW);
 }
 
 VertexBufferObject::~VertexBufferObject()
@@ -31,24 +31,24 @@ VertexBufferObject::~VertexBufferObject()
 
 
 /*
-    ____               __                  ____             ____    ____              
-   /  _/   ____   ____/ /  ___    _  __   / __ )  __  __   / __/   / __/  ___    _____
-   / /    / __ \ / __  /  / _ \  | |/_/  / __  | / / / /  / /_    / /_   / _ \  / ___/
- _/ /    / / / // /_/ /  /  __/ _>  <   / /_/ / / /_/ /  / __/   / __/  /  __/ / /    
-/___/   /_/ /_/ \__,_/   \___/ /_/|_|  /_____/  \__,_/  /_/     /_/     \___/ /_/     
-                                                                                      
+    ______    __                                   __     ____             ____    ____              
+   / ____/   / /  ___    ____ ___   ___    ____   / /_   / __ )  __  __   / __/   / __/  ___    _____
+  / __/     / /  / _ \  / __ `__ \ / _ \  / __ \ / __/  / __  | / / / /  / /_    / /_   / _ \  / ___/
+ / /___    / /  /  __/ / / / / / //  __/ / / / // /_   / /_/ / / /_/ /  / __/   / __/  /  __/ / /    
+/_____/   /_/   \___/ /_/ /_/ /_/ \___/ /_/ /_/ \__/  /_____/  \__,_/  /_/     /_/     \___/ /_/     
+                                                                                                     
 */
 
 
-IndexBufferObject::IndexBufferObject(const void* Data, unsigned int Size)
+ElementBufferObject::ElementBufferObject(unsigned int* Indices, unsigned int Size)
     : _rendererID(0)
 {
     glGenBuffers(1, &_rendererID);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _rendererID);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, Size, 0, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, Size, Indices, GL_STATIC_DRAW);
 }
 
-IndexBufferObject::~IndexBufferObject()
+ElementBufferObject::~ElementBufferObject()
 {
     glDeleteBuffers(1, &_rendererID);
 }
