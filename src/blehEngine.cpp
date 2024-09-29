@@ -54,20 +54,24 @@ void blehEngine::Initialize()
     
     // automate
     float vertices[] = {
-        0.5f,  0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        -0.5f, -0.5f, 0.0f,
-        -0.5f,  0.5f, 0.0f
+        0.25f,  0.25f, 0.0f, // top right
+        0.25f, -0.25f, 0.0f, // bot right
+        -0.25f, -0.25f, 0.0f, // bot left
+        -0.25f,  0.25f, 0.0f, // top left
+        -0.75f,  0.25f, 0.0f,
+        -0.75f,  -0.25f, 0.0f
     };
     unsigned int indices[] =
     { 
         0, 1, 3,
-        1, 2, 3
+        1, 2, 3,
+        2,3,4,
+        2,4,5
     };
     
     VertexArrayObject VAO;
     ElementBufferObject EBO(indices, sizeof(indices));
-    VertexBufferObject VBO(vertices, 3 * 4 * sizeof(float)); // automate // vertex size * rows * sizeof(float)
+    VertexBufferObject VBO(vertices, 3 * 6 * sizeof(float)); // automate // vertex size * rows * sizeof(float)
     
     glEnableVertexAttribArray(0); 
     
@@ -91,7 +95,8 @@ void blehEngine::GameLoop(GLFWwindow *window, Renderer renderer)
     {
         glClear(GL_COLOR_BUFFER_BIT);
         renderer.RenderFrame();
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr); // automate
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, nullptr); // automate
 
         glfwSwapBuffers(window);
         glfwPollEvents();
