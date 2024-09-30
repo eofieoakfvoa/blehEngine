@@ -1,7 +1,9 @@
 #include "Texture.h"
 Texture::Texture(const std::string &filepath)
 {
-    glGenTextures(1, &_RenderID);
+    //Fixa så att bleh kan ladda in .png filer med GL_RGBA :P
+    stbi_set_flip_vertically_on_load(true);  
+    glGenTextures(1, &_RenderID); 
     glBindTexture(GL_TEXTURE_2D, _RenderID);
     unsigned char* data = stbi_load(filepath.c_str(), &Width, &Height, &nrChannels, 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

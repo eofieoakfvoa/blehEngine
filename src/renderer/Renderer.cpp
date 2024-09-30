@@ -18,7 +18,7 @@ void Renderer::RenderFrame()
 {
     float timeValue = glfwGetTime();
     float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
-
+    
     glUseProgram(shaderID);
     glm::mat4 model         = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     glm::mat4 view          = glm::mat4(1.0f);
@@ -39,5 +39,5 @@ void Renderer::RenderFrame()
     glUniform4f(UniformLocation, 0.0f, greenValue, 0.8f, 0.8f);
     glUniform1i(glGetUniformLocation(shaderID, "texture1"), 0);
     glUniform1i(glGetUniformLocation(shaderID, "texture2"), 1);
-    
+
 }
