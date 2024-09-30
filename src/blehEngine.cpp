@@ -55,6 +55,7 @@ void blehEngine::Initialize()
     glViewport(0, 0, 800, 600);
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glEnable(GL_DEPTH_TEST);
 
     // automate
     //     float vertices[] = {
@@ -64,7 +65,6 @@ void blehEngine::Initialize()
     //         -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
     //         -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left
     //     };
-    glEnable(GL_DEPTH_TEST);
 
     float vertices[] = {
         -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
@@ -127,42 +127,39 @@ void blehEngine::Initialize()
     unsigned int indices[] =
         {
             0, 1, 3,
-            1, 2, 3};
+            1, 2, 3
+        };
     VertexArrayObject VAO;
     VertexBufferObject VBO(vertices, sizeof(vertices)); // automate // vertex size * rows * sizeof(float)
     ElementBufferObject EBO(indices, sizeof(indices));
 
-    Texture texture1("src/res/Textures/container.jpg");
-    Texture texture2("src/res/Textures/cc12.jpg");
+    Texture texture1("src/res/Textures/container.jpg"), texture2("src/res/Textures/cc12.jpg");
     Shader shader;
     ShaderProgramSource Source = shader.ParseShader("src/res/shaders/defaultShader.shader");
     unsigned int realshader = shader.CreateShader(Source.VertexSource, Source.FragmentSource);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
     glEnableVertexAttribArray(0);
-    // texture coord attribute
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
 
     Renderer renderer(realshader);
     glUseProgram(realshader);
-    glUniform1i(glGetUniformLocation(realshader, "texture1"), 0);
-    glUniform1i(glGetUniformLocation(realshader, "texture2"), 1);
+    shader.setInt("texture1", 0);
+    shader.setInt("texture2", 1);
 
-    GameLoop(window, renderer, texture1.GetRenderID(), texture2.GetRenderID());
+    GameLoop(window, renderer, texture1, texture2);
 
     glfwDestroyWindow(window);
     glfwTerminate();
 }
 
-void blehEngine::GameLoop(GLFWwindow *window, Renderer renderer, unsigned int texture1, unsigned int texture2)
+void blehEngine::GameLoop(GLFWwindow *window, Renderer renderer, Texture texture1, Texture texture2)
 {
     while (!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture1);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, texture2);
+        texture1.SetActive(GL_TEXTURE0);
+        texture2.SetActive(GL_TEXTURE1);
 
         renderer.RenderFrame();
         // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);

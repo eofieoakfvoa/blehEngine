@@ -2,7 +2,7 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
+#pragma once
 class Texture
 {
 private:
@@ -13,7 +13,7 @@ private:
 public:
     Texture(const std::string &filepath);
     ~Texture();
-    void SetActive();
+    void SetActive(GLenum textureLocation);
     unsigned int GetRenderID();
 
 };

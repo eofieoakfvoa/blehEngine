@@ -51,7 +51,6 @@ unsigned int Shader::CompileShader(const std::string &source, unsigned int type)
     glShaderSource(id, 1, &src, nullptr);
     glCompileShader(id);
 
-    // Check for compilation errors
     int result;
     glGetShaderiv(id, GL_COMPILE_STATUS, &result); 
     if (result == GL_FALSE) 
@@ -61,7 +60,7 @@ unsigned int Shader::CompileShader(const std::string &source, unsigned int type)
         std::vector<char> message(length);
         glGetShaderInfoLog(id, length, &length, message.data());
         std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << std::endl;
-        std::cout << "Shader source:\n" << source << std::endl; // Print the shader source
+        std::cout << "Shader source:\n" << source << std::endl;
         std::cout << message.data() << std::endl;
         glDeleteShader(id);
         return 0;
@@ -74,15 +73,14 @@ unsigned int Shader::CreateShader(const std::string &vertexshader, const std::st
 {
     unsigned int program = glCreateProgram();
     unsigned int vs = CompileShader(vertexshader, GL_VERTEX_SHADER);
-    if (vs == 0) return 0;  // Check for errors
+    if (vs == 0) return 0; //chat gpt code lol idk ifall de behövs ? den liksom returnarn 0 så fuckar något upp så liksom programet : oh well
     unsigned int fs = CompileShader(fragmentshader, GL_FRAGMENT_SHADER);
-    if (fs == 0) return 0;  // Check for errors
+    if (fs == 0) return 0; //chat gpt code lol
 
     glAttachShader(program, vs);
     glAttachShader(program, fs);
     glLinkProgram(program);
 
-    // Check for linking errors
     int result;
     glGetProgramiv(program, GL_LINK_STATUS, &result); 
     if (result == GL_FALSE) 

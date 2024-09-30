@@ -23,6 +23,11 @@ Texture::~Texture()
 {
 
 }
+void Texture::SetActive(GLenum textureLocation)
+{
+    glActiveTexture(textureLocation);
+    glBindTexture(GL_TEXTURE_2D, _RenderID);
+}
 unsigned int Texture::GetRenderID()
 {
     return _RenderID;
