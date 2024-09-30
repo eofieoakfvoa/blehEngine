@@ -4,5 +4,5 @@ class blehEngine
 {
     public: 
         void Initialize();
-        void GameLoop(GLFWwindow* window, Renderer renderer);
+        void GameLoop(GLFWwindow* window, Renderer renderer, unsigned int texture1, unsigned int texture2);
 };

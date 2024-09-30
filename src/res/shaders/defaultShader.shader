@@ -1,29 +1,33 @@
 #shader vertex
 #version 430 core
 
-layout(location = 0) in vec3 position;
-layout(location = 1) in vec3 color;
-layout(location = 2) in vec2 aTexCoord;
-out vec3 vertexColor;
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec2 aTexCoord;
+
 out vec2 TexCoord;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
 
 void main()
 {
-    gl_Position = vec4(position, 1.0);
-    vertexColor = color ;
-    TexCoord = aTexCoord;
+	gl_Position = projection * view * model * vec4(aPos, 1.0);
+	TexCoord = vec2(aTexCoord.x, aTexCoord.y);
 }
-
 
 
 #shader fragment
 #version 430 core
 
 out vec4 color;
-in vec3 vertexColor;
+
 in vec2 TexCoord;
-uniform sampler2D ourTexture;
+uniform sampler2D texture1;
+uniform sampler2D texture2;
+
 void main()
 {
-    color = texture(ourTexture, TexCoord) * vec4(vertexColor, 1.0); 
+	// linearly interpolate between both textures (80% container, 20% awesomeface)
+	color = mix(texture(texture1, TexCoord), texture(texture2, TexCoord), 0.2);
 }

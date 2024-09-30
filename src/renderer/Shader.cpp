@@ -46,6 +46,7 @@ ShaderProgramSource Shader::ParseShader(const std::string &filepath)
 unsigned int Shader::CompileShader(const std::string &source, unsigned int type)
 {
     unsigned int id = glCreateShader(type);
+    _RendererID = id;
     const char *src = source.c_str();
     glShaderSource(id, 1, &src, nullptr);
     glCompileShader(id);
@@ -100,4 +101,24 @@ unsigned int Shader::CreateShader(const std::string &vertexshader, const std::st
     glDeleteShader(fs);
 
     return program;
+}
+void Shader::Use() 
+{ 
+    glUseProgram(_RendererID);
+}  
+void Shader::setBool(const std::string &name, bool value) const
+{         
+    glUniform1i(glGetUniformLocation(_RendererID, name.c_str()), (int)value); 
+}
+void Shader::setInt(const std::string &name, int value) const
+{ 
+    glUniform1i(glGetUniformLocation(_RendererID, name.c_str()), value); 
+}
+void Shader::setFloat(const std::string &name, float value) const
+{ 
+    glUniform1f(glGetUniformLocation(_RendererID, name.c_str()), value); 
+}
+void Shader::setMat4(const std::string &name, const glm::mat4 &mat) const
+{
+    glUniformMatrix4fv(glGetUniformLocation(_RendererID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
