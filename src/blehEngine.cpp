@@ -1,16 +1,17 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include "stb_image.h"
+
 
 #include "blehEngine.h"
 #include "renderer/Renderer.h"
 #include "renderer/Buffers.h"
 #include "renderer/Shader.h"
 #include "renderer/VertexArrayObject.h"
-#include "stb_image.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 #include "renderer/Texture.h"
 using std::cout;
 using std::endl;
@@ -32,8 +33,8 @@ void blehEngine::Initialize()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, 1);
-    // glEnable(GL_DEBUG_OUTPUT);
-
+    glEnable(GL_DEBUG_OUTPUT);
+    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     GLFWwindow *window;
     window = glfwCreateWindow(800, 600, "blehEngine", NULL, NULL);
     if (window == NULL)
@@ -139,6 +140,7 @@ void blehEngine::Initialize()
     Shader shader;
     ShaderProgramSource Source = shader.ParseShader("src/res/shaders/defaultShader.shader");
     unsigned int realshader = shader.CreateShader(Source.VertexSource, Source.FragmentSource);
+
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
@@ -159,6 +161,8 @@ void blehEngine::GameLoop(GLFWwindow *window, Renderer renderer, Texture texture
 {
     while (!glfwWindowShouldClose(window))
     {
+        //processInput(window);
+        
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         texture1.SetActive(GL_TEXTURE0);
         texture2.SetActive(GL_TEXTURE1);
@@ -171,6 +175,12 @@ void blehEngine::GameLoop(GLFWwindow *window, Renderer renderer, Texture texture
         glfwPollEvents();
     }
 }
+    void processInput(GLFWwindow *window)
+    {
+
+    }
+
+
 
 int main()
 {
