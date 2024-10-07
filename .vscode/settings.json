@@ -59,4 +59,5 @@
         "ratio": "cpp",
         "fstream": "cpp"
     },
+    "cmake.ignoreCMakeListsMissing": true,
 }
