@@ -6,13 +6,13 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "stb_image.h"
 
-
 #include "blehEngine.h"
 #include "renderer/Renderer.h"
 #include "renderer/Buffers.h"
 #include "renderer/Shader.h"
 #include "renderer/VertexArrayObject.h"
 #include "renderer/Texture.h"
+#include "Services/InputEventSystem.h"
 using std::cout;
 using std::endl;
 
@@ -33,8 +33,8 @@ void blehEngine::Initialize()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, 1);
-    //glEnable(GL_DEBUG_OUTPUT);
-    //glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+    // glEnable(GL_DEBUG_OUTPUT);
+    // glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     GLFWwindow *window;
     window = glfwCreateWindow(800, 600, "blehEngine", NULL, NULL);
     if (window == NULL)
@@ -109,8 +109,7 @@ void blehEngine::Initialize()
             0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
             0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
             -0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
-            -0.5f, 0.5f, -0.5f, 0.0f, 1.0f
-        };
+            -0.5f, 0.5f, -0.5f, 0.0f, 1.0f};
 
     // float vertices[] = {
     //     0.25f,  0.25f, 0.0f, // top right
@@ -130,8 +129,7 @@ void blehEngine::Initialize()
     unsigned int indices[] =
         {
             0, 1, 3,
-            1, 2, 3
-        };
+            1, 2, 3};
     VertexArrayObject VAO;
     VertexBufferObject VBO(vertices, sizeof(vertices)); // automate // vertex size * rows * sizeof(float)
     ElementBufferObject EBO(indices, sizeof(indices));
@@ -150,23 +148,26 @@ void blehEngine::Initialize()
     glUseProgram(realshader);
     shader.setInt("texture1", 0);
     shader.setInt("texture2", 1);
+    InputEventSystem InputSystem(window);
 
-    GameLoop(window, renderer, texture1, texture2);
+
+    GameLoop(window, renderer, texture1, texture2, &InputSystem);
 
     glfwDestroyWindow(window);
     glfwTerminate();
 }
 
-void blehEngine::GameLoop(GLFWwindow *window, Renderer renderer, Texture texture1, Texture texture2)
+void blehEngine::GameLoop(GLFWwindow *window, Renderer renderer, Texture texture1, Texture texture2, InputEventSystem* InputSystem)
 {
     while (!glfwWindowShouldClose(window))
     {
-        //processInput(window);
-        
+        // processInput(window);
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        InputSystem->KeyCallBack;
         texture1.SetActive(GL_TEXTURE0);
         texture2.SetActive(GL_TEXTURE1);
-
+        
         renderer.RenderFrame();
         // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr); // automate
@@ -175,12 +176,9 @@ void blehEngine::GameLoop(GLFWwindow *window, Renderer renderer, Texture texture
         glfwPollEvents();
     }
 }
-    void processInput(GLFWwindow *window)
-    {
-
-    }
-
-
+void processInput(GLFWwindow *window)
+{
+}
 
 int main()
 {
