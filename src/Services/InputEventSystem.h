@@ -12,7 +12,10 @@
 
 enum KeyStates
 {
-    KeyPressed, KeyReleased, KeyHeldDown,
+    KeyPressed, // Skickar en gång när knappen först blir klickad. 
+    KeyReleased, // Skickar en gång när knappen blir släppt.
+    KeyContinuous, // Skickas constant medans knappen är nere. + multiple
+    KeyRepeat, // Basic Windows repeat altså blir det en delay, borde användas för typing. + Inte multiple
 };
 class InputEvent
 {

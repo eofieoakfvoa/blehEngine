@@ -66,13 +66,6 @@ void blehEngine::Initialize()
     glEnable(GL_DEPTH_TEST);
 
     // automate
-    //     float vertices[] = {
-    // //       {--POSITIONS--}      {--COLORS--}       (--TEXCORDS--)
-    //         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-    //         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-    //         -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-    //         -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left
-    //     };
 
     float vertices[] =
         {
@@ -117,27 +110,12 @@ void blehEngine::Initialize()
             0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
             -0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
             -0.5f, 0.5f, -0.5f, 0.0f, 1.0f
-            };
-
-    // float vertices[] = {
-    //     0.25f,  0.25f, 0.0f, // top right
-    //     0.25f, -0.25f, 0.0f, // bot right
-    //     -0.25f, -0.25f, 0.0f, // bot left
-    //     -0.25f,  0.25f, 0.0f, // top left
-    //     -0.75f,  0.25f, 0.0f,
-    //     -0.75f,  -0.25f, 0.0f
-    // };
-    // unsigned int indices[] =
-    // {
-    //     0, 1, 3,
-    //     1, 2, 3,
-    //     2,3,4,
-    //     2,4,5
-    // };
+        };
     unsigned int indices[] =
         {
             0, 1, 3,
-            1, 2, 3};
+            1, 2, 3
+        };
     VertexArrayObject VAO;
     VertexBufferObject VBO(vertices, sizeof(vertices)); // automate // vertex size * rows * sizeof(float)
     ElementBufferObject EBO(indices, sizeof(indices));
@@ -156,8 +134,7 @@ void blehEngine::Initialize()
     glUseProgram(realshader);
     shader.setInt("texture1", 0);
     shader.setInt("texture2", 1);
-    //InputEventSystem InputSystem(window);
-
+    InputEventSystem InputSystem(Window);
 
     GameLoop(renderer, texture1, texture2);
     glfwDestroyWindow(Window);
@@ -168,25 +145,24 @@ void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2)
 {
     while (!glfwWindowShouldClose(Window))
     {
-        //Game Pipeline?
-        //Input
-        //Physics
-        //render Pipeline
+        // Game Pipeline?
+        // Input
+        // Physics
+        // render Pipeline
         ProcessInput();
-        
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         texture1.SetActive(GL_TEXTURE0);
         texture2.SetActive(GL_TEXTURE1);
-        
+
         renderer.RenderFrame();
         // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr); // automate
         glDrawArrays(GL_TRIANGLES, 0, 36);
         glfwSwapBuffers(Window);
         glfwPollEvents();
-    } 
+    }
 }
-
 
 int main()
 {

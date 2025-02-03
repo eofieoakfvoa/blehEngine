@@ -1,18 +1,9 @@
 #include "InputEventSystem.h"
 #include <iostream>
-void InputEventSystem::FireInputEvent(int key)
-{
-    auto it = _Subscribers.find(key);
-    if (it != _Subscribers.end())
-    {
-        for (auto& wrapper : it->second)
-        {
-            wrapper->Execute();
-        }
-    }
-}
+void InputEventSystem::FireInputEvent(int key){}
 void InputEventSystem::DispatchInputEvent()
 {
+    
 }
 InputEventSystem::InputEventSystem(GLFWwindow *Window)
 {
@@ -31,14 +22,16 @@ void InputEventSystem::KeyCallBack(GLFWwindow* Window, int Key, int scanCode, in
     {
         std::cout << "Key " << Key << " released!\n";
     }    
-    else if (Action == GLFW_REPEAT) // använd it detta eftersom den kollar bara ifall en knapp repeatar så jag borde igentligen kolla ifall den blev released efter ha blivit klickd
+    else if (Action == GLFW_REPEAT) // ska inte kollas ifall den hålls ner mest bara för typing lowkey
     {
         std::cout << "Key " << Key << " Held!\n";
     }
-}
+    
 
-void InputEventSystem::SubscribeToInput(const int key)
+
+    // på något sätt när en knapp blir klickad så
+}
+void ToggleContinousHold(int Key, bool Toggle)
 {
-    auto wrapper = std::make_unique<InputEventWrapper>();
-    _Subscribers[key].push_back(std::move(wrapper));
+
 }
