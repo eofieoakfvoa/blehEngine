@@ -1,15 +1,31 @@
 #include "InputEventSystem.h"
 #include <iostream>
-InputEventSystem::InputEventSystem(GLFWwindow* Window)
+void InputEventSystem::FireInputEvent(int key)
+{
+    auto it = _Subscribers.find(key);
+    if (it != _Subscribers.end())
+    {
+        for (auto& wrapper : it->second)
+        {
+            wrapper->Execute();
+        }
+    }
+}
+void InputEventSystem::DispatchInputEvent()
+{
+}
+InputEventSystem::InputEventSystem(GLFWwindow *Window)
 {
     glfwSetKeyCallback(Window, KeyCallBack);
 }
 
 void InputEventSystem::KeyCallBack(GLFWwindow* Window, int Key, int scanCode, int Action, int Mods)
 {
+    auto* inputSystem = static_cast<InputEventSystem*>(glfwGetWindowUserPointer(Window));
     if (Action == GLFW_PRESS)
     {
         std::cout << "Key " << Key << " pressed!\n";
+        inputSystem->FireInputEvent(Key);
     }
     else if (Action == GLFW_RELEASE)
     {
@@ -21,3 +37,8 @@ void InputEventSystem::KeyCallBack(GLFWwindow* Window, int Key, int scanCode, in
     }
 }
 
+void InputEventSystem::SubscribeToInput(const int key)
+{
+    auto wrapper = std::make_unique<InputEventWrapper>();
+    _Subscribers[key].push_back(std::move(wrapper));
+}

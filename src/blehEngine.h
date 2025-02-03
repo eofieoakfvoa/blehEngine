@@ -4,7 +4,11 @@
 #include "Services/InputEventSystem.h"
 class blehEngine
 {
-    public: 
-        void Initialize();
-        void GameLoop(GLFWwindow* window, Renderer renderer, Texture texture1, Texture texture2, InputEventSystem* inputsystem);
+private:
+    GLFWwindow* Window;
+public:
+    blehEngine();
+    void ProcessInput();
+    void Initialize();
+    void GameLoop(Renderer renderer, Texture texture1, Texture texture2);
 };
