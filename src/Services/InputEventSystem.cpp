@@ -1,6 +1,9 @@
 #include "InputEventSystem.h"
 #include <iostream>
-void InputEventSystem::FireInputEvent(int key){}
+void InputEventSystem::FireInputEvent(int key)
+{
+    
+}
 void InputEventSystem::DispatchInputEvent()
 {
     
@@ -21,7 +24,7 @@ void InputEventSystem::KeyCallBack(GLFWwindow* Window, int Key, int scanCode, in
     else if (Action == GLFW_RELEASE)
     {
         std::cout << "Key " << Key << " released!\n";
-    }    
+    }
     else if (Action == GLFW_REPEAT) // ska inte kollas ifall den hålls ner mest bara för typing lowkey
     {
         std::cout << "Key " << Key << " Held!\n";
@@ -30,8 +33,9 @@ void InputEventSystem::KeyCallBack(GLFWwindow* Window, int Key, int scanCode, in
 
 
     // på något sätt när en knapp blir klickad så
-}
-void ToggleContinousHold(int Key, bool Toggle)
-{
 
+    //void ToggleContinousHold(int Key, bool Toggle)
+    //{
+
+    //}
 }
