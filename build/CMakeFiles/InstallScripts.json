@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build/cmake_install.cmake",
+		"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build/vendors/glm/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

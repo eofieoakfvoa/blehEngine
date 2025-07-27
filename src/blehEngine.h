@@ -9,6 +9,7 @@ private:
 public:
     blehEngine();
     void ProcessInput();
+    void InitializeGLFW();
     void Initialize();
     void GameLoop(Renderer renderer, Texture texture1, Texture texture2);
 };

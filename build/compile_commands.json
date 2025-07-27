@@ -1,0 +1,74 @@
+[
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\lib\\stb.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\lib\\stb.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/lib/stb.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/lib/stb.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\Camera.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\Camera.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Camera.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/Camera.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\Services\\InputEventSystem.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\Services\\InputEventSystem.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/InputEventSystem.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\Services\\Window.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\Services\\Window.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/Window.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\blehEngine.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\blehEngine.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehEngine.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_C.rsp -g -o CMakeFiles\\BlehEngine.dir\\src\\glad.c.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\glad.c",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/glad.c",
+  "output": "CMakeFiles/BlehEngine.dir/src/glad.c.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\renderer\\Buffers.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\renderer\\Buffers.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Buffers.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/renderer/Buffers.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\renderer\\Renderer.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\renderer\\Renderer.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Renderer.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/renderer/Renderer.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\renderer\\Shader.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\renderer\\Shader.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Shader.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/renderer/Shader.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\renderer\\Texture.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\renderer\\Texture.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Texture.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/renderer/Texture.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\renderer\\Triangle.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\renderer\\Triangle.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Triangle.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/renderer/Triangle.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\renderer\\VertexArrayObject.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\renderer\\VertexArrayObject.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/VertexArrayObject.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.obj"
+}
+]

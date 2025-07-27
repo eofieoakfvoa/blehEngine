@@ -4,7 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "stb_image.h"
+#include <stb_image.h>
 
 #include "blehEngine.h"
 #include "renderer/Renderer.h"
@@ -13,6 +13,9 @@
 #include "renderer/VertexArrayObject.h"
 #include "renderer/Texture.h"
 #include "Services/InputEventSystem.h"
+
+
+
 using std::cout;
 using std::endl;
 
@@ -29,7 +32,7 @@ void blehEngine::ProcessInput()
 {
 }
 
-void blehEngine::Initialize()
+void blehEngine::InitializeGLFW()
 {
     if (!glfwInit())
     {
@@ -50,6 +53,12 @@ void blehEngine::Initialize()
         glfwTerminate();
         return;
     }
+    // return Window
+}
+
+void blehEngine::Initialize()
+{
+    InitializeGLFW();
 
     glfwMakeContextCurrent(Window);
 
@@ -120,9 +129,9 @@ void blehEngine::Initialize()
     VertexBufferObject VBO(vertices, sizeof(vertices)); // automate // vertex size * rows * sizeof(float)
     ElementBufferObject EBO(indices, sizeof(indices));
 
-    Texture texture1("src/res/Textures/container.jpg"), texture2("src/res/Textures/cc12.jpg");
+    Texture texture1(ResourcePath"Textures/container.jpg"), texture2(ResourcePath"Textures/cc12.jpg");
     Shader shader;
-    ShaderProgramSource Source = shader.ParseShader("src/res/shaders/defaultShader.shader");
+    ShaderProgramSource Source = shader.ParseShader(ResourcePath"shaders/defaultShader.shader");
     unsigned int realshader = shader.CreateShader(Source.VertexSource, Source.FragmentSource);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);

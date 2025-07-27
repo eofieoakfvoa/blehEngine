@@ -17,6 +17,8 @@ Texture::Texture(const std::string &filepath)
     }
     else
     {
+        printf("Failed to load texture at path: %s\n", filepath.c_str());
+        std::cerr << "Failed to load texture: " << stbi_failure_reason() << std::endl;
         std::cout << "Failed to load texture" << std::endl;
     }
     stbi_image_free(data);
