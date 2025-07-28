@@ -306,6 +306,10 @@ CMakeFiles/BlehEngine.dir/src/Camera.cpp.obj
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.1.0/include/stdint.h
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.1.0/include/syslimits.h
  C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Camera.h
+ C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/Vector2.h
+ C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/Vector3.h
+ C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/Vector4.h
+ C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/blehMath.h
 
 CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj
  C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/InputEventSystem.cpp
@@ -1044,7 +1048,6 @@ CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj
  C:/msys64/ucrt64/include/c++/14.1.0/numbers
  C:/msys64/ucrt64/include/c++/14.1.0/optional
  C:/msys64/ucrt64/include/c++/14.1.0/ostream
- C:/msys64/ucrt64/include/c++/14.1.0/print
  C:/msys64/ucrt64/include/c++/14.1.0/pstl/execution_defs.h
  C:/msys64/ucrt64/include/c++/14.1.0/pstl/glue_memory_defs.h
  C:/msys64/ucrt64/include/c++/14.1.0/pstl/pstl_config.h

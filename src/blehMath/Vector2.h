@@ -2,10 +2,10 @@ namespace blehMath
 {
     class vector2
     {
-        float x,y;
+        float X,Y;
         template<typename xValue, typename yValue>
         vector2(xValue x,yValue y)
-            :  x(static_cast<float>(xValue)), y(static_cast<float>(xValue))
+            :  X(static_cast<float>(x)), Y(static_cast<float>(y))
             {}
             
     };

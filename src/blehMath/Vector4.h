@@ -9,7 +9,7 @@ namespace blehMath
         
         template <typename xValue, typename yValue, typename zValue, typename aValue>
         vector4(xValue x, yValue y,zValue z, aValue a)
-            : X(static_cast<float>(x)), Y(static_cast<float>(y)), Z(static_cast<float>(z)), A(static_cast(aValue))
+            : X(static_cast<float>(x)), Y(static_cast<float>(y)), Z(static_cast<float>(z)), A(static_cast<float>(A))
             {}
         template<typename zValue>
         void Add(vector4 otherVector4)

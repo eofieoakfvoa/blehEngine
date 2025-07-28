@@ -303,7 +303,11 @@ CMakeFiles/BlehEngine.dir/src/Camera.cpp.obj: C:/Users/troll/OneDrive/Documents/
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.1.0/include/stddef.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.1.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.1.0/include/syslimits.h \
-  C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Camera.h
+  C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Camera.h \
+  C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/Vector2.h \
+  C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/Vector3.h \
+  C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/Vector4.h \
+  C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/blehMath.h
 
 CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/InputEventSystem.cpp \
   C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/GLFW/glfw3.h \
@@ -1039,7 +1043,6 @@ CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj: C:/Users/troll/OneDrive/Docume
   C:/msys64/ucrt64/include/c++/14.1.0/numbers \
   C:/msys64/ucrt64/include/c++/14.1.0/optional \
   C:/msys64/ucrt64/include/c++/14.1.0/ostream \
-  C:/msys64/ucrt64/include/c++/14.1.0/print \
   C:/msys64/ucrt64/include/c++/14.1.0/pstl/execution_defs.h \
   C:/msys64/ucrt64/include/c++/14.1.0/pstl/glue_memory_defs.h \
   C:/msys64/ucrt64/include/c++/14.1.0/pstl/pstl_config.h \
@@ -2805,9 +2808,9 @@ C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/detai
 
 C:/msys64/ucrt64/include/c++/14.1.0/bits/allocator.h:
 
-C:/msys64/ucrt64/include/apisetcconv.h:
-
 C:/msys64/ucrt64/include/psdk_inc/_ip_mreq1.h:
+
+C:/msys64/ucrt64/include/apisetcconv.h:
 
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/detail/type_vec1.hpp:
 
@@ -2907,11 +2910,9 @@ C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/ext/m
 
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/ext/matrix_float3x3.hpp:
 
-C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/ext/matrix_float3x3_precision.hpp:
-
-C:/msys64/ucrt64/include/c++/14.1.0/print:
-
 C:/msys64/ucrt64/include/c++/14.1.0/cassert:
+
+C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/ext/matrix_float3x3_precision.hpp:
 
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/ext/matrix_float3x4.hpp:
 
@@ -2943,11 +2944,11 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.1.0/include/avx512vnnivlintrin.h:
 
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/ext/scalar_int_sized.hpp:
 
-C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/ext/scalar_uint_sized.hpp:
+C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/vector_relational.hpp:
 
 C:/msys64/ucrt64/include/psdk_inc/_socket_types.h:
 
-C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/vector_relational.hpp:
+C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/ext/scalar_uint_sized.hpp:
 
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/vendors/glm/ext/vector_bool2_precision.hpp:
 
@@ -3087,6 +3088,16 @@ C:/msys64/ucrt64/include/fltwinerror.h:
 
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Camera.h:
 
+C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/Vector2.h:
+
+C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/Vector3.h:
+
+C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/Vector4.h:
+
+C:/msys64/ucrt64/include/c++/14.1.0/bits/functional_hash.h:
+
+C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehMath/blehMath.h:
+
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/InputEventSystem.cpp:
 
 C:/msys64/ucrt64/include/heapapi.h:
@@ -3146,8 +3157,6 @@ C:/msys64/ucrt64/include/c++/14.1.0/bits/locale_facets.h:
 C:/msys64/ucrt64/include/c++/14.1.0/bits/erase_if.h:
 
 C:/msys64/ucrt64/include/c++/14.1.0/bits/exception_ptr.h:
-
-C:/msys64/ucrt64/include/c++/14.1.0/bits/functional_hash.h:
 
 C:/msys64/ucrt64/include/c++/14.1.0/bits/hash_bytes.h:
 
@@ -3238,8 +3247,6 @@ C:/msys64/ucrt64/include/c++/14.1.0/charconv:
 C:/msys64/ucrt64/include/mmsystem.h:
 
 C:/msys64/ucrt64/include/c++/14.1.0/ctime:
-
-C:/msys64/ucrt64/include/psdk_inc/_ip_types.h:
 
 C:/msys64/ucrt64/include/c++/14.1.0/exception:
 
@@ -3464,6 +3471,8 @@ C:/msys64/ucrt64/include/rpcnsi.h:
 C:/msys64/ucrt64/include/profileapi.h:
 
 C:/msys64/ucrt64/include/prsht.h:
+
+C:/msys64/ucrt64/include/psdk_inc/_ip_types.h:
 
 C:/msys64/ucrt64/include/psdk_inc/_wsa_errnos.h:
 

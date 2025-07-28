@@ -13,7 +13,7 @@ namespace blehMath
             {}
         template<typename zValue>
         vector3(vector2 Vector2, zValue z)
-            : X(vector2.x), Y(vector2.y), Z(static_cast<float>(z))
+            : X(Vector2.X), Y(Vector2.Y), Z(static_cast<float>(z))
             {}
         void Add(vector3 otherVector3)
         {
