@@ -3,13 +3,13 @@
 
 # compile C with C:/msys64/ucrt64/bin/gcc.exe
 # compile CXX with C:/msys64/ucrt64/bin/g++.exe
-C_DEFINES = -DResourcePath=\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\"
+C_DEFINES = -DResourcePath=\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/engineResources/\"
 
 C_INCLUDES = @CMakeFiles/BlehEngine.dir/includes_C.rsp
 
 C_FLAGS = -g
 
-CXX_DEFINES = -DResourcePath=\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\"
+CXX_DEFINES = -DResourcePath=\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/engineResources/\"
 
 CXX_INCLUDES = @CMakeFiles/BlehEngine.dir/includes_CXX.rsp
 

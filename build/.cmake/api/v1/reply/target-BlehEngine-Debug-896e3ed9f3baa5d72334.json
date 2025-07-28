@@ -36,19 +36,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 22,
+				"line" : 23,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
 				"line" : 15,
-				"parent" : 0
-			},
-			{
-				"command" : 3,
-				"file" : 0,
-				"line" : 17,
 				"parent" : 0
 			},
 			{
@@ -61,6 +55,12 @@
 				"command" : 3,
 				"file" : 0,
 				"line" : 19,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 20,
 				"parent" : 0
 			}
 		]
@@ -78,7 +78,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"define" : "ResourcePath=\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\""
+					"define" : "ResourcePath=\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/engineResources/\""
 				}
 			],
 			"includes" : 
@@ -131,7 +131,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"define" : "ResourcePath=\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/res/\""
+					"define" : "ResourcePath=\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/engineResources/\""
 				}
 			],
 			"includes" : 
