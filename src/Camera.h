@@ -1,5 +1,5 @@
 #include <glm/glm.hpp>
-
+#include "blehMath/blehMath.h"
 enum CameraMode
 {
     NoClip = 1, // fly like kamera
@@ -12,8 +12,9 @@ private:
     unsigned int FieldOfView;
     glm::vec3 Position;
     glm::vec4 Rotation; //Quaternion
-    glm::vec3 WorldUp = glm::vec3(0.0f, 1.0f, 0.0f);
+    blehMath::vector3 WorldUp = blehMath::vector3(0.0f,1.0f,0.0f);
     CameraMode CameraType = CameraMode::NoClip;
+
 public:
     Camera(glm::vec3 StartPosition, glm::vec4 StartRotation);
     ~Camera();
