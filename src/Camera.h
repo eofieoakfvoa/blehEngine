@@ -1,5 +1,7 @@
+#define GLM_ENABLE_EXPERIMENTAL
+#pragma once
 #include <glm/glm.hpp>
-#include "blehMath/blehMath.h"
+#include <glm/gtx/quaternion.hpp>
 enum CameraMode
 {
     NoClip = 1, // fly like kamera
@@ -11,18 +13,19 @@ class Camera
 private:
     unsigned int FieldOfView;
     glm::vec3 Position;
-    glm::vec4 Rotation; //Quaternion
-    blehMath::vector3 WorldUp = blehMath::vector3(0.0f,1.0f,0.0f);
+    glm::quat Rotation; //Quaternion
+    glm::vec3 const WorldUp = glm::vec3(0.0f, 1.0f, 0.0f);
     CameraMode CameraType = CameraMode::NoClip;
-
 public:
-    Camera(glm::vec3 StartPosition, glm::vec4 StartRotation);
+    glm::vec3 CameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+    Camera(glm::vec3 StartPosition, glm::quat StartRotation);
     ~Camera();
+    glm::vec3 GetPosition();
     void Move(glm::vec3 addedPosition);
     void SetPosition(glm::vec3 newPosition);
-    void LookAt(glm::vec3 PositionToLookAt);
+    glm::mat4 LookAt(glm::vec3 PositionToLookAt);
     void Rotate(glm::vec4 AddedQuaternion);
-    void SetRotation(glm::vec4 NewQuaternion);
-    void EulerToQuaternion(glm::vec3 Euler);
+    void SetRotation(glm::quat NewQuaternion);
+    static glm::quat EulerToQuaternion(glm::vec3 Euler);
     void Update();
 };

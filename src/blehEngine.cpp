@@ -13,8 +13,7 @@
 #include "renderer/VertexArrayObject.h"
 #include "renderer/Texture.h"
 #include "Services/InputEventSystem.h"
-
-
+#include "Camera.h"
 
 using std::cout;
 using std::endl;
@@ -47,12 +46,6 @@ void blehEngine::InitializeGLFW()
     // glEnable(GL_DEBUG_OUTPUT);
     // glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     Window = glfwCreateWindow(800, 600, "blehEngine", NULL, NULL);
-    if (Window == NULL)
-    {
-        cout << "Failed to open GLFW window" << endl;
-        glfwTerminate();
-        return;
-    }
     // return Window
 }
 
@@ -68,8 +61,6 @@ void blehEngine::Initialize()
         glfwTerminate();
         return;
     }
-
-    glViewport(0, 0, 800, 600);
 
     glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
     glEnable(GL_DEPTH_TEST);
@@ -125,6 +116,7 @@ void blehEngine::Initialize()
             0, 1, 3,
             1, 2, 3
         };
+    
     VertexArrayObject VAO;
     VertexBufferObject VBO(vertices, sizeof(vertices)); // automate // vertex size * rows * sizeof(float)
     ElementBufferObject EBO(indices, sizeof(indices));
@@ -144,7 +136,8 @@ void blehEngine::Initialize()
     shader.setInt("texture1", 0);
     shader.setInt("texture2", 1);
     InputEventSystem InputSystem(Window);
-
+    Camera camera(glm::vec3(0.0f,0.0f,0.0f), Camera::EulerToQuaternion(glm::vec3(0.0f,0.0f,0.0f)));
+    renderer.SetCurrentCamera(&camera);
     GameLoop(renderer, texture1, texture2);
     glfwDestroyWindow(Window);
     glfwTerminate();
@@ -158,6 +151,7 @@ void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2)
         // Input
         // Physics
         // render Pipeline
+
         ProcessInput();
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

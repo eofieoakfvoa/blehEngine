@@ -25,7 +25,11 @@ void Renderer::RenderFrame()
     glm::mat4 view          = glm::mat4(1.0f);
     glm::mat4 projection    = glm::mat4(1.0f);
     model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f)); 
-    view  = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+    const float radius = 10.0f;
+    float camX = sin(glfwGetTime()) * radius;
+    float camZ = cos(glfwGetTime()) * radius;
+    currentCamera->SetPosition(glm::vec3(camX, 0.0, camZ));
+    view = currentCamera->LookAt(currentCamera->GetPosition() + currentCamera->CameraFront);
     projection = glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f);
     unsigned int modelLoc = glGetUniformLocation(shaderID, "model");
     unsigned int viewLoc  = glGetUniformLocation(shaderID, "view");
@@ -38,4 +42,9 @@ void Renderer::RenderFrame()
     glUniform1i(glGetUniformLocation(shaderID, "texture1"), 0);
     glUniform1i(glGetUniformLocation(shaderID, "texture2"), 1); //hello
 
+}
+
+void Renderer::SetCurrentCamera(Camera* cameraToBeSet)
+{
+    currentCamera = cameraToBeSet;
 }

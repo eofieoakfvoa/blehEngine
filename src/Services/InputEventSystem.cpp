@@ -28,10 +28,7 @@ void InputEventSystem::KeyCallBack(GLFWwindow* Window, int Key, int scanCode, in
     else if (Action == GLFW_REPEAT) // ska inte kollas ifall den hålls ner mest bara för typing lowkey
     {
         std::cout << "Key " << Key << " Held!\n";
-    }
-    
-
-
+    } 
     // på något sätt när en knapp blir klickad så
 
     //void ToggleContinousHold(int Key, bool Toggle)
