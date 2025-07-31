@@ -18,6 +18,9 @@
 using std::cout;
 using std::endl;
 
+
+//En thread för varje subsystem av programmet, så mainthread är main loop. animation thread dynamics thread rendering thread network thread-
+
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
