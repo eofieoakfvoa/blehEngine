@@ -1,5 +1,0 @@
-C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build/CMakeFiles/BlehEngine.dir
-C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build/CMakeFiles/edit_cache.dir
-C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build/CMakeFiles/rebuild_cache.dir
-C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build/vendors/glm/CMakeFiles/edit_cache.dir
-C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build/vendors/glm/CMakeFiles/rebuild_cache.dir
