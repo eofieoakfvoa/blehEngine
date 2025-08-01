@@ -101,26 +101,41 @@ CMakeFiles/BlehEngine.dir/src/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BlehEngine.dir/src/Camera.cpp.s"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Camera.cpp -o CMakeFiles\BlehEngine.dir\src\Camera.cpp.s
 
-CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj: CMakeFiles/BlehEngine.dir/flags.make
-CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
-CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/InputEventSystem.cpp
-CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\Services\InputEventSystem.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\Services\InputEventSystem.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\InputEventSystem.cpp
+CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj: CMakeFiles/BlehEngine.dir/flags.make
+CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
+CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/Event.cpp
+CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\Services\Event.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\Services\Event.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\Event.cpp
 
-CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\InputEventSystem.cpp > CMakeFiles\BlehEngine.dir\src\Services\InputEventSystem.cpp.i
+CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\Event.cpp > CMakeFiles\BlehEngine.dir\src\Services\Event.cpp.i
 
-CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\InputEventSystem.cpp -o CMakeFiles\BlehEngine.dir\src\Services\InputEventSystem.cpp.s
+CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\Event.cpp -o CMakeFiles\BlehEngine.dir\src\Services\Event.cpp.s
+
+CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj: CMakeFiles/BlehEngine.dir/flags.make
+CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
+CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/InputService.cpp
+CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\Services\InputService.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\Services\InputService.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\InputService.cpp
+
+CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\InputService.cpp > CMakeFiles\BlehEngine.dir\src\Services\InputService.cpp.i
+
+CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\InputService.cpp -o CMakeFiles\BlehEngine.dir\src\Services\InputService.cpp.s
 
 CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj: CMakeFiles/BlehEngine.dir/flags.make
 CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
 CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/Window.cpp
 CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\Services\Window.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\Services\Window.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\Services\Window.cpp
 
 CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.i: cmake_force
@@ -135,7 +150,7 @@ CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj: CMakeFiles/BlehEngine.dir/flag
 CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
 CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/blehEngine.cpp
 CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\blehEngine.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\blehEngine.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\blehEngine.cpp
 
 CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.i: cmake_force
@@ -150,7 +165,7 @@ CMakeFiles/BlehEngine.dir/src/glad.c.obj: CMakeFiles/BlehEngine.dir/flags.make
 CMakeFiles/BlehEngine.dir/src/glad.c.obj: CMakeFiles/BlehEngine.dir/includes_C.rsp
 CMakeFiles/BlehEngine.dir/src/glad.c.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/glad.c
 CMakeFiles/BlehEngine.dir/src/glad.c.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/BlehEngine.dir/src/glad.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/BlehEngine.dir/src/glad.c.obj"
 	C:\msys64\ucrt64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/glad.c.obj -MF CMakeFiles\BlehEngine.dir\src\glad.c.obj.d -o CMakeFiles\BlehEngine.dir\src\glad.c.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\glad.c
 
 CMakeFiles/BlehEngine.dir/src/glad.c.i: cmake_force
@@ -165,7 +180,7 @@ CMakeFiles/BlehEngine.dir/src/renderer/Buffers.cpp.obj: CMakeFiles/BlehEngine.di
 CMakeFiles/BlehEngine.dir/src/renderer/Buffers.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
 CMakeFiles/BlehEngine.dir/src/renderer/Buffers.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Buffers.cpp
 CMakeFiles/BlehEngine.dir/src/renderer/Buffers.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Buffers.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Buffers.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/renderer/Buffers.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\renderer\Buffers.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\renderer\Buffers.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\renderer\Buffers.cpp
 
 CMakeFiles/BlehEngine.dir/src/renderer/Buffers.cpp.i: cmake_force
@@ -180,7 +195,7 @@ CMakeFiles/BlehEngine.dir/src/renderer/Renderer.cpp.obj: CMakeFiles/BlehEngine.d
 CMakeFiles/BlehEngine.dir/src/renderer/Renderer.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
 CMakeFiles/BlehEngine.dir/src/renderer/Renderer.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Renderer.cpp
 CMakeFiles/BlehEngine.dir/src/renderer/Renderer.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Renderer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Renderer.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/renderer/Renderer.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\renderer\Renderer.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\renderer\Renderer.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\renderer\Renderer.cpp
 
 CMakeFiles/BlehEngine.dir/src/renderer/Renderer.cpp.i: cmake_force
@@ -195,7 +210,7 @@ CMakeFiles/BlehEngine.dir/src/renderer/Shader.cpp.obj: CMakeFiles/BlehEngine.dir
 CMakeFiles/BlehEngine.dir/src/renderer/Shader.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
 CMakeFiles/BlehEngine.dir/src/renderer/Shader.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Shader.cpp
 CMakeFiles/BlehEngine.dir/src/renderer/Shader.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Shader.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Shader.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/renderer/Shader.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\renderer\Shader.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\renderer\Shader.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\renderer\Shader.cpp
 
 CMakeFiles/BlehEngine.dir/src/renderer/Shader.cpp.i: cmake_force
@@ -210,7 +225,7 @@ CMakeFiles/BlehEngine.dir/src/renderer/Texture.cpp.obj: CMakeFiles/BlehEngine.di
 CMakeFiles/BlehEngine.dir/src/renderer/Texture.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
 CMakeFiles/BlehEngine.dir/src/renderer/Texture.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Texture.cpp
 CMakeFiles/BlehEngine.dir/src/renderer/Texture.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Texture.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Texture.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/renderer/Texture.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\renderer\Texture.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\renderer\Texture.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\renderer\Texture.cpp
 
 CMakeFiles/BlehEngine.dir/src/renderer/Texture.cpp.i: cmake_force
@@ -225,7 +240,7 @@ CMakeFiles/BlehEngine.dir/src/renderer/Triangle.cpp.obj: CMakeFiles/BlehEngine.d
 CMakeFiles/BlehEngine.dir/src/renderer/Triangle.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
 CMakeFiles/BlehEngine.dir/src/renderer/Triangle.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/Triangle.cpp
 CMakeFiles/BlehEngine.dir/src/renderer/Triangle.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Triangle.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/Triangle.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/renderer/Triangle.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\renderer\Triangle.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\renderer\Triangle.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\renderer\Triangle.cpp
 
 CMakeFiles/BlehEngine.dir/src/renderer/Triangle.cpp.i: cmake_force
@@ -240,7 +255,7 @@ CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.obj: CMakeFiles/Ble
 CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.obj: CMakeFiles/BlehEngine.dir/includes_CXX.rsp
 CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.obj: C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/renderer/VertexArrayObject.cpp
 CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.obj: CMakeFiles/BlehEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.obj -MF CMakeFiles\BlehEngine.dir\src\renderer\VertexArrayObject.cpp.obj.d -o CMakeFiles\BlehEngine.dir\src\renderer\VertexArrayObject.cpp.obj -c C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\src\renderer\VertexArrayObject.cpp
 
 CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.i: cmake_force
@@ -255,7 +270,8 @@ CMakeFiles/BlehEngine.dir/src/renderer/VertexArrayObject.cpp.s: cmake_force
 BlehEngine_OBJECTS = \
 "CMakeFiles/BlehEngine.dir/lib/stb.cpp.obj" \
 "CMakeFiles/BlehEngine.dir/src/Camera.cpp.obj" \
-"CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj" \
+"CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj" \
+"CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj" \
 "CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj" \
 "CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj" \
 "CMakeFiles/BlehEngine.dir/src/glad.c.obj" \
@@ -271,7 +287,8 @@ BlehEngine_EXTERNAL_OBJECTS =
 
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/lib/stb.cpp.obj
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/src/Camera.cpp.obj
-C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj
+C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj
+C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/src/Services/Window.cpp.obj
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/src/blehEngine.cpp.obj
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/src/glad.c.obj
@@ -286,7 +303,7 @@ C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: C
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/linkLibs.rsp
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/objects1.rsp
 C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/BlehEngine.exe: CMakeFiles/BlehEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\BlehEngine.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable C:\Users\troll\OneDrive\Documents\GitHub\blehEngine\blehEngine\BlehEngine.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\BlehEngine.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

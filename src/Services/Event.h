@@ -3,7 +3,7 @@
 #include <functional>
 #include <map>
 #include <string>
-enum EventType
+enum class EventType
 {
     None = -1,
     Single, //function calls
@@ -16,11 +16,10 @@ class Event
     public:
     
     Event(EventType type);
-    void DispatchEvent();
+    virtual void DispatchEvent();
     virtual void SubscribeToEvent(std::function<void()> callback);
     protected:
     std::vector<std::function<void()>> Listeners;
-    //std::map<std::string, > EventArgs; Fixa senare
-    EventType TypeOfEvent;
+    EventType Type;
     //InputEvent::OnEvent(OnKeyRelease, blehKey.W)
 };

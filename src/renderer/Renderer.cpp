@@ -5,6 +5,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <iostream>
+#include <Services/InputService.h>
+
 Renderer::Renderer(unsigned int shader)
     : UniformLocation(glGetUniformLocation(shader, "_Color")), shaderID(shader)
 {
@@ -19,16 +22,12 @@ void Renderer::RenderFrame()
     
     float timeValue = glfwGetTime();
     float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
-    
     glUseProgram(shaderID);
     glm::mat4 model         = glm::mat4(1.0f);
     glm::mat4 view          = glm::mat4(1.0f);
     glm::mat4 projection    = glm::mat4(1.0f);
     model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f)); 
-    const float radius = 10.0f;
-    float camX = sin(glfwGetTime()) * radius;
-    float camZ = cos(glfwGetTime()) * radius;
-    currentCamera->SetPosition(glm::vec3(camX, 0.0, camZ));
+
     view = currentCamera->LookAt(currentCamera->GetPosition() + currentCamera->CameraFront);
     projection = glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f);
     unsigned int modelLoc = glGetUniformLocation(shaderID, "model");
@@ -47,4 +46,9 @@ void Renderer::RenderFrame()
 void Renderer::SetCurrentCamera(Camera* cameraToBeSet)
 {
     currentCamera = cameraToBeSet;
+}
+
+Camera &Renderer::GetCurrentCamera()
+{
+    return *currentCamera;
 }

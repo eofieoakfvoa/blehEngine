@@ -10,14 +10,14 @@ void Event::DispatchEvent()
 {
     switch(Type)
     {
-        case Single:
+        case EventType::Single:
             for (std::function<void()> Listener : Listeners)
                 Listener();
             break;
-        case Persistant: 
+        case EventType::Persistant:
 
             break;
-        case Blind:
+        case EventType::Blind:
 
             break;
         default:

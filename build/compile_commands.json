@@ -13,9 +13,15 @@
 },
 {
   "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/engineResources/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\Services\\InputEventSystem.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\Services\\InputEventSystem.cpp",
-  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/InputEventSystem.cpp",
-  "output": "CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj"
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/engineResources/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\Services\\Event.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\Services\\Event.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/Event.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj"
+},
+{
+  "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DResourcePath=\\\"C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/engineResources/\\\" @CMakeFiles/BlehEngine.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\BlehEngine.dir\\src\\Services\\InputService.cpp.obj -c C:\\Users\\troll\\OneDrive\\Documents\\GitHub\\blehEngine\\blehEngine\\src\\Services\\InputService.cpp",
+  "file": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/src/Services/InputService.cpp",
+  "output": "CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj"
 },
 {
   "directory": "C:/Users/troll/OneDrive/Documents/GitHub/blehEngine/blehEngine/build",

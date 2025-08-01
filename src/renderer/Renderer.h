@@ -18,4 +18,5 @@ public:
     ~Renderer();
     void RenderFrame();
     void SetCurrentCamera(Camera* cameraToBeSet);
+    Camera& GetCurrentCamera();
 };

@@ -176,29 +176,53 @@ src/Camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Camera.cpp.s
 .PHONY : src/Camera.cpp.s
 
-src/Services/InputEventSystem.obj: src/Services/InputEventSystem.cpp.obj
-.PHONY : src/Services/InputEventSystem.obj
+src/Services/Event.obj: src/Services/Event.cpp.obj
+.PHONY : src/Services/Event.obj
 
 # target to build an object file
-src/Services/InputEventSystem.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.obj
-.PHONY : src/Services/InputEventSystem.cpp.obj
+src/Services/Event.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.obj
+.PHONY : src/Services/Event.cpp.obj
 
-src/Services/InputEventSystem.i: src/Services/InputEventSystem.cpp.i
-.PHONY : src/Services/InputEventSystem.i
+src/Services/Event.i: src/Services/Event.cpp.i
+.PHONY : src/Services/Event.i
 
 # target to preprocess a source file
-src/Services/InputEventSystem.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.i
-.PHONY : src/Services/InputEventSystem.cpp.i
+src/Services/Event.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.i
+.PHONY : src/Services/Event.cpp.i
 
-src/Services/InputEventSystem.s: src/Services/InputEventSystem.cpp.s
-.PHONY : src/Services/InputEventSystem.s
+src/Services/Event.s: src/Services/Event.cpp.s
+.PHONY : src/Services/Event.s
 
 # target to generate assembly for a file
-src/Services/InputEventSystem.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Services/InputEventSystem.cpp.s
-.PHONY : src/Services/InputEventSystem.cpp.s
+src/Services/Event.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Services/Event.cpp.s
+.PHONY : src/Services/Event.cpp.s
+
+src/Services/InputService.obj: src/Services/InputService.cpp.obj
+.PHONY : src/Services/InputService.obj
+
+# target to build an object file
+src/Services/InputService.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.obj
+.PHONY : src/Services/InputService.cpp.obj
+
+src/Services/InputService.i: src/Services/InputService.cpp.i
+.PHONY : src/Services/InputService.i
+
+# target to preprocess a source file
+src/Services/InputService.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.i
+.PHONY : src/Services/InputService.cpp.i
+
+src/Services/InputService.s: src/Services/InputService.cpp.s
+.PHONY : src/Services/InputService.s
+
+# target to generate assembly for a file
+src/Services/InputService.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BlehEngine.dir\build.make CMakeFiles/BlehEngine.dir/src/Services/InputService.cpp.s
+.PHONY : src/Services/InputService.cpp.s
 
 src/Services/Window.obj: src/Services/Window.cpp.obj
 .PHONY : src/Services/Window.obj
@@ -431,9 +455,12 @@ help:
 	@echo ... src/Camera.obj
 	@echo ... src/Camera.i
 	@echo ... src/Camera.s
-	@echo ... src/Services/InputEventSystem.obj
-	@echo ... src/Services/InputEventSystem.i
-	@echo ... src/Services/InputEventSystem.s
+	@echo ... src/Services/Event.obj
+	@echo ... src/Services/Event.i
+	@echo ... src/Services/Event.s
+	@echo ... src/Services/InputService.obj
+	@echo ... src/Services/InputService.i
+	@echo ... src/Services/InputService.s
 	@echo ... src/Services/Window.obj
 	@echo ... src/Services/Window.i
 	@echo ... src/Services/Window.s

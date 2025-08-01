@@ -12,7 +12,7 @@
 #include "renderer/Shader.h"
 #include "renderer/VertexArrayObject.h"
 #include "renderer/Texture.h"
-#include "Services/InputEventSystem.h"
+#include "Services/InputService.h"
 #include "Camera.h"
 
 using std::cout;
@@ -138,9 +138,31 @@ void blehEngine::Initialize()
     glUseProgram(realshader);
     shader.setInt("texture1", 0);
     shader.setInt("texture2", 1);
-    InputEventSystem InputSystem(Window);
     Camera camera(glm::vec3(0.0f,0.0f,0.0f), Camera::EulerToQuaternion(glm::vec3(0.0f,0.0f,0.0f)));
     renderer.SetCurrentCamera(&camera);
+    InputEvent InputSystem(Window);
+    InputSystem.SubscribeToEvent([&camera](KeyAction action, int key) {
+        if  (action == KeyAction::OnKeyPress && key == GLFW_KEY_W)
+        {
+            std::cout << "W was pressed\n";
+            camera.SetPosition( camera.GetPosition() + 5.0f * camera.CameraFront);
+            cout << camera.GetPosition().x << endl;
+            cout << camera.GetPosition().y << endl;
+            cout << camera.GetPosition().z << endl;
+        }
+        if (action == KeyAction::OnKeyPress && key == GLFW_KEY_A)
+        {
+            
+        }
+                if (action == KeyAction::OnKeyPress && key == GLFW_KEY_S)
+        {
+            camera.SetPosition( camera.GetPosition() - 5.0f * camera.CameraFront);
+        }
+                if (action == KeyAction::OnKeyPress && key == GLFW_KEY_D)
+        {
+            std::cout << "W was pressed\n";
+        }
+    });
     GameLoop(renderer, texture1, texture2);
     glfwDestroyWindow(Window);
     glfwTerminate();
