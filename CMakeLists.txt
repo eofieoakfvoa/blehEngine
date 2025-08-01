@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION "3.19")
 add_subdirectory(vendors/glm)
+add_subdirectory(vendors/glfw-3.4)
 project("BlehEngine")
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>") # https://www.youtube.com/watch?v=IBgfeZME2Vw säger att det är bra
 #set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Release>:Release>")
@@ -18,6 +19,6 @@ target_compile_definitions("BlehEngine" PUBLIC ResourcePath="${CMAKE_CURRENT_SOU
 target_include_directories("BlehEngine" PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/vendors")
 target_include_directories("BlehEngine" PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 target_include_directories("BlehEngine" PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
-
+target_include_directories("BlehEngine" PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/vendors/glfw-3.4/include")
 target_link_libraries("BlehEngine" PRIVATE glm)
-target_link_libraries("BlehEngine" PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/lib/libglfw3dll.a" -lwinmm -lgdi32 )
+target_link_libraries("BlehEngine" PRIVATE glfw)
