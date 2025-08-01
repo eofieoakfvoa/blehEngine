@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Build files :3
+build/*
+!build/build.xml
