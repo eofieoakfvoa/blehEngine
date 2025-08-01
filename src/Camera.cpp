@@ -7,7 +7,7 @@ Camera::Camera(glm::vec3 StartPosition, glm::quat StartRotation)
 Camera::~Camera()
 {
 }
-glm::vec3 Camera::GetPosition()
+const glm::vec3& Camera::GetPosition()
 {
     return Position;
 }

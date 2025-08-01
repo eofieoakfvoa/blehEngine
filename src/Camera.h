@@ -20,7 +20,7 @@ public:
     glm::vec3 CameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
     Camera(glm::vec3 StartPosition, glm::quat StartRotation);
     ~Camera();
-    glm::vec3 GetPosition();
+    const glm::vec3& GetPosition();
     void Move(glm::vec3 addedPosition);
     void SetPosition(glm::vec3 newPosition);
     glm::mat4 LookAt(glm::vec3 PositionToLookAt);
