@@ -10,7 +10,7 @@ InputEvent::InputEvent(GLFWwindow* window)
 
 void InputEvent::SubscribeToEvent(std::function<void(KeyAction, int)> function)
 {
-    listeners.push_back(function);
+    listeners.emplace_back(function);
 }
 
 void InputEvent::DispatchEvent(KeyAction keyAction, int key)

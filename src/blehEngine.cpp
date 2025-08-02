@@ -14,7 +14,7 @@
 #include "renderer/Texture.h"
 #include "Services/InputService.h"
 #include "Camera.h"
-
+#include "blehMath/blehMath.h"
 using std::cout;
 using std::endl;
 
@@ -138,7 +138,7 @@ void blehEngine::Initialize()
     glUseProgram(realshader);
     shader.setInt("texture1", 0);
     shader.setInt("texture2", 1);
-    Camera camera(glm::vec3(0.0f,0.0f,0.0f), Camera::EulerToQuaternion(glm::vec3(0.0f,0.0f,0.0f)));
+    Camera camera(blehMath::vector3(0.0f,0.0f,0.0f), Camera::EulerToQuaternion(blehMath::vector3(0.0f,0.0f,0.0f)));
     renderer.SetCurrentCamera(&camera);
     InputEvent InputSystem(Window);
     InputSystem.SubscribeToEvent([&camera](KeyAction action, int key) {
