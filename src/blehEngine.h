@@ -5,10 +5,11 @@ class blehEngine
 {
 private:
     GLFWwindow* Window;
-public:
-    blehEngine();
     void ProcessInput();
     void InitializeGLFW();
-    void Initialize();
+    void InitializeGlad();
     void GameLoop(Renderer renderer, Texture texture1, Texture texture2);
+public:
+    blehEngine();
+    void Initialize();
 };

@@ -15,10 +15,17 @@
 #include "Services/InputService.h"
 #include "Camera.h"
 #include "blehMath/blehMath.h"
+
+int main()
+{
+    blehEngine bleh;
+    bleh.Initialize();
+    return 0;
+}
+
+
 using std::cout;
 using std::endl;
-
-
 //En thread för varje subsystem av programmet, så mainthread är main loop. animation thread dynamics thread rendering thread network thread-
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
@@ -46,27 +53,30 @@ void blehEngine::InitializeGLFW()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, 1);
-    // glEnable(GL_DEBUG_OUTPUT);
-    // glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     Window = glfwCreateWindow(800, 600, "blehEngine", NULL, NULL);
+    glfwMakeContextCurrent(Window);
+    glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
     // return Window
 }
-
-void blehEngine::Initialize()
+void blehEngine::InitializeGlad()
 {
-    InitializeGLFW();
-
-    glfwMakeContextCurrent(Window);
-
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         cout << "Failed to initialize GLAD" << endl;
         glfwTerminate();
         return;
     }
-
-    glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
+    glEnable(GL_DEBUG_OUTPUT);
+    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     glEnable(GL_DEPTH_TEST);
+    
+}
+void blehEngine::Initialize()
+{
+    InitializeGLFW();
+    InitializeGlad();
+
+
 
     // automate
 
@@ -142,25 +152,41 @@ void blehEngine::Initialize()
     renderer.SetCurrentCamera(&camera);
     InputEvent InputSystem(Window);
     InputSystem.SubscribeToEvent([&camera](KeyAction action, int key) {
+        blehMath::vector3 cameraposition = camera.GetPosition();
+        float cameraspeed = 0.1f;
         if  (action == KeyAction::OnKeyPress && key == GLFW_KEY_W)
         {
             std::cout << "W was pressed\n";
-            camera.SetPosition( camera.GetPosition() + 5.0f * camera.CameraFront);
+            cameraposition = blehMath::vector3(cameraposition.x, cameraposition.y, cameraposition.z - cameraspeed); 
+            camera.SetPosition(cameraposition);
             cout << camera.GetPosition().x << endl;
             cout << camera.GetPosition().y << endl;
             cout << camera.GetPosition().z << endl;
         }
         if (action == KeyAction::OnKeyPress && key == GLFW_KEY_A)
         {
+            cameraposition = blehMath::vector3(cameraposition.x - cameraspeed, cameraposition.y, cameraposition.z); 
+            camera.SetPosition(cameraposition);
+            cout << camera.GetPosition().x << endl;
+            cout << camera.GetPosition().y << endl;
+            cout << camera.GetPosition().z << endl;
             
         }
-                if (action == KeyAction::OnKeyPress && key == GLFW_KEY_S)
+        if (action == KeyAction::OnKeyPress && key == GLFW_KEY_S)
         {
-            camera.SetPosition( camera.GetPosition() - 5.0f * camera.CameraFront);
+            cameraposition = blehMath::vector3(cameraposition.x, cameraposition.y, cameraposition.z + cameraspeed); 
+            camera.SetPosition(cameraposition);
+            cout << camera.GetPosition().x << endl;
+            cout << camera.GetPosition().y << endl;
+            cout << camera.GetPosition().z << endl;
         }
-                if (action == KeyAction::OnKeyPress && key == GLFW_KEY_D)
+        if (action == KeyAction::OnKeyPress && key == GLFW_KEY_D)
         {
-            std::cout << "W was pressed\n";
+            cameraposition = blehMath::vector3(cameraposition.x + cameraspeed, cameraposition.y, cameraposition.z); 
+            camera.SetPosition(cameraposition);
+            cout << camera.GetPosition().x << endl;
+            cout << camera.GetPosition().y << endl;
+            cout << camera.GetPosition().z << endl;
         }
     });
     GameLoop(renderer, texture1, texture2);
@@ -190,11 +216,4 @@ void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2)
         glfwSwapBuffers(Window);
         glfwPollEvents();
     }
-}
-
-int main()
-{
-    blehEngine bleh;
-    bleh.Initialize();
-    return 0;
 }

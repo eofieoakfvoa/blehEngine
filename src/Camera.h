@@ -1,5 +1,6 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #pragma once
+#include "blehMath/blehMath.h"
 #include <glm/glm.hpp>
 #include <glm/gtx/quaternion.hpp>
 enum CameraMode
@@ -12,20 +13,20 @@ class Camera
 {
 private:
     unsigned int FieldOfView;
-    glm::vec3 Position;
-    glm::quat Rotation; //Quaternion
-    glm::vec3 const WorldUp = glm::vec3(0.0f, 1.0f, 0.0f);
+    blehMath::vector3 Position;
+    blehMath::quaternion Rotation; //Quaternion
+    blehMath::vector3 const WorldUp = blehMath::vector3(0.0f, 1.0f, 0.0f);
     CameraMode CameraType = CameraMode::NoClip;
 public:
-    glm::vec3 CameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-    Camera(glm::vec3 StartPosition, glm::quat StartRotation);
+    blehMath::vector3 CameraFront = blehMath::vector3(0.0f, 0.0f, -1.0f);
+    Camera(blehMath::vector3 StartPosition, blehMath::quaternion StartRotation);
     ~Camera();
-    const glm::vec3& GetPosition();
-    void Move(glm::vec3 addedPosition);
-    void SetPosition(glm::vec3 newPosition);
-    glm::mat4 LookAt(glm::vec3 PositionToLookAt);
-    void Rotate(glm::vec4 AddedQuaternion);
-    void SetRotation(glm::quat NewQuaternion);
-    static glm::quat EulerToQuaternion(glm::vec3 Euler);
+    const blehMath::vector3& GetPosition();
+    void Move(blehMath::vector3 addedPosition);
+    void SetPosition(blehMath::vector3 newPosition);
+    glm::mat4 LookAt(blehMath::vector3 PositionToLookAt);
+    void Rotate(glm::vec4 AddedQuaternion); //vet faktiskt inte ifall jag borde ha en vec4 här, skulle kanske kunna ha function overloading med vec4, quat, vec3(euler)
+    void SetRotation(blehMath::quaternion NewQuaternion);
+    static blehMath::quaternion EulerToQuaternion(blehMath::vector3 Euler);
     void Update();
 };
