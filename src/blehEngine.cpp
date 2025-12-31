@@ -5,6 +5,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <stb_image.h>
+#include <print>
+
 
 #include "blehEngine.h"
 #include "renderer/Renderer.h"
@@ -150,51 +152,20 @@ void blehEngine::Initialize()
     shader.setInt("texture2", 1);
     Camera camera(blehMath::vector3(0.0f,0.0f,0.0f), Camera::EulerToQuaternion(blehMath::vector3(0.0f,0.0f,0.0f)));
     renderer.SetCurrentCamera(&camera);
-    InputEvent InputSystem(Window);
-    InputSystem.SubscribeToEvent([&camera](KeyAction action, int key) {
-        blehMath::vector3 cameraposition = camera.GetPosition();
-        float cameraspeed = 0.1f;
-        if  (action == KeyAction::OnKeyPress && key == GLFW_KEY_W)
-        {
-            std::cout << "W was pressed\n";
-            cameraposition = blehMath::vector3(cameraposition.x, cameraposition.y, cameraposition.z - cameraspeed); 
-            camera.SetPosition(cameraposition);
-            cout << camera.GetPosition().x << endl;
-            cout << camera.GetPosition().y << endl;
-            cout << camera.GetPosition().z << endl;
-        }
-        if (action == KeyAction::OnKeyPress && key == GLFW_KEY_A)
-        {
-            cameraposition = blehMath::vector3(cameraposition.x - cameraspeed, cameraposition.y, cameraposition.z); 
-            camera.SetPosition(cameraposition);
-            cout << camera.GetPosition().x << endl;
-            cout << camera.GetPosition().y << endl;
-            cout << camera.GetPosition().z << endl;
-            
-        }
-        if (action == KeyAction::OnKeyPress && key == GLFW_KEY_S)
-        {
-            cameraposition = blehMath::vector3(cameraposition.x, cameraposition.y, cameraposition.z + cameraspeed); 
-            camera.SetPosition(cameraposition);
-            cout << camera.GetPosition().x << endl;
-            cout << camera.GetPosition().y << endl;
-            cout << camera.GetPosition().z << endl;
-        }
-        if (action == KeyAction::OnKeyPress && key == GLFW_KEY_D)
-        {
-            cameraposition = blehMath::vector3(cameraposition.x + cameraspeed, cameraposition.y, cameraposition.z); 
-            camera.SetPosition(cameraposition);
-            cout << camera.GetPosition().x << endl;
-            cout << camera.GetPosition().y << endl;
-            cout << camera.GetPosition().z << endl;
-        }
-    });
-    GameLoop(renderer, texture1, texture2);
+    InputService InputSystem(Window);
+    
+    
+    
+    // InputSystem.SubscribeToEvent([&camera](KeyAction action, int key) {
+    //     blehMath::vector3 cameraposition = camera.GetPosition();
+    //     float cameraspeed = 0.5f;
+
+    GameLoop(renderer, texture1, texture2, InputSystem, camera);
     glfwDestroyWindow(Window);
     glfwTerminate();
 }
 
-void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2)
+void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2, InputService& inputsystem, Camera& camera)
 {
     while (!glfwWindowShouldClose(Window))
     {
@@ -202,13 +173,35 @@ void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2)
         // Input
         // Physics
         // render Pipeline
-
+        blehMath::vector3 cameraposition = camera.GetPosition();
+        if (inputsystem.GetKeyDown(Bleh::Key::W))
+        {
+            std::cout << "W was pressed\n";
+            cameraposition = blehMath::vector3(cameraposition.x, cameraposition.y, cameraposition.z - 0.0005f); //fps dependent på hastigheten
+            camera.SetPosition(cameraposition);
+        }
+        if (inputsystem.GetKeyDown(Bleh::Key::A))
+        {
+            cameraposition = blehMath::vector3(cameraposition.x - 0.0005f, cameraposition.y, cameraposition.z); 
+            camera.SetPosition(cameraposition);
+    
+        }
+        if (inputsystem.GetKeyDown(Bleh::Key::S))
+        {
+            cameraposition = blehMath::vector3(cameraposition.x, cameraposition.y, cameraposition.z + 0.0005f); 
+            camera.SetPosition(cameraposition);
+        }
+        if (inputsystem.GetKeyDown(Bleh::Key::D))
+        {
+            cameraposition = blehMath::vector3(cameraposition.x + 0.0005f, cameraposition.y, cameraposition.z); 
+            camera.SetPosition(cameraposition);
+        }
         ProcessInput();
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         texture1.SetActive(GL_TEXTURE0);
         texture2.SetActive(GL_TEXTURE1);
-
+        
         renderer.RenderFrame();
         // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr); // automate

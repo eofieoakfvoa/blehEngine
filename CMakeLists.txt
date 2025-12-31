@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION "3.19")
+
+project("BlehEngine")
+
 add_subdirectory(vendors/glm)
 add_subdirectory(vendors/glfw-3.4)
-project("BlehEngine")
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>") # https://www.youtube.com/watch?v=IBgfeZME2Vw säger att det är bra
 #set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Release>:Release>")
 

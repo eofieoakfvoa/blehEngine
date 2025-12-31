@@ -1,45 +1,62 @@
 #include "InputService.h"
 #include <iostream>
 
-InputEvent::InputEvent(GLFWwindow* window)
-    : Event(EventType::Single)
+
+
+#include <string>
+InputService::InputService(GLFWwindow* window)
 {
+    
     glfwSetWindowUserPointer(window, this);
-    glfwSetKeyCallback(window, KeyCallback);
+    glfwSetKeyCallback(window, PollKeys);
+    _InputDispatcher.SubscribeToEvent<KeyPressedEvent>([this](KeyPressedEvent& e){OnKeyPressed(e);});
+    _InputDispatcher.SubscribeToEvent<KeyReleasedEvent>([this](KeyReleasedEvent& e){OnKeyReleased(e);}); //läs om lambdas
 }
 
-void InputEvent::SubscribeToEvent(std::function<void(KeyAction, int)> function)
+void InputService::OnKeyPressed(KeyPressedEvent& e) 
 {
-    listeners.emplace_back(function);
+    _KeyStateMap[e.GetKeyCode()] = KeyState::KeyDown;
+}
+void InputService::OnKeyReleased(KeyReleasedEvent &e)
+{
+    _KeyStateMap[e.GetKeyCode()] = KeyState::KeyUp;
 }
 
-void InputEvent::DispatchEvent(KeyAction keyAction, int key)
-{
-    for (const auto& listener : listeners)
-    {
-        listener(keyAction, key);
-    }
-}
 
-void InputEvent::KeyCallback(GLFWwindow* window, int key, int scanCode, int action, int mods)
+void InputService::PollKeys(GLFWwindow *window, int key, int scanCode, int action, int modifierBits)
 {
-    auto* inputSystem = static_cast<InputEvent*>(glfwGetWindowUserPointer(window));
+
+    auto* inputSystem = static_cast<InputService*>(glfwGetWindowUserPointer(window));
 
     switch (action)
     {
-    case GLFW_PRESS:
-        std::cout << "Key " << key << " pressed!\n";
-        inputSystem->DispatchEvent(KeyAction::OnKeyPress, key);
-        break;
+        case GLFW_PRESS:
+        {
+            std::cout << "Key " << key << " pressed!\n";
+            //keypress eeveent 
+            KeyPressedEvent eevee((Bleh::Key)key);
+            inputSystem->_InputDispatcher.Dispatch(eevee);
+            break;
+            
+        }
+        case GLFW_RELEASE:
+        {
+            std::cout << "Key " << key << " released!\n";
+            KeyReleasedEvent eevee((Bleh::Key)key);
+            inputSystem->_InputDispatcher.Dispatch(eevee);
+            break;
+        
+        }
 
-    case GLFW_RELEASE:
-        std::cout << "Key " << key << " released!\n";
-        inputSystem->DispatchEvent(KeyAction::OnKeyRelease, key);
-        break;
-
-    case GLFW_REPEAT:
-        std::cout << "Key " << key << " held!\n";
-        inputSystem->DispatchEvent(KeyAction::OnKeyHeld, key);
-        break;
+        case GLFW_REPEAT:
+            std::cout << "Key " << key << " held!\n";
+            break;
     }
 }
+
+
+bool InputService::GetKeyDown(Bleh::Key keyToLookUp)
+{
+    return (_KeyStateMap[keyToLookUp] == KeyState::KeyDown) ? true : false; //ifall den är none så false automatiskt oavsätt vad keyn är eftersom den inte blivit uppdaterad 
+}
+
