@@ -1,27 +1,24 @@
 #include "Camera.h"
 
 Camera::Camera(glm::vec3 StartPosition, glm::quat StartRotation)
-    : Position(StartPosition), Rotation(StartRotation)
+    : _CameraPosition(StartPosition), _CameraRotation(StartRotation), _ProjectionMatrix(glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f))
 {
 }
 Camera::~Camera()
 {
 }
-const glm::vec3& Camera::GetPosition()
-{
-    return Position;
-}
+
 void Camera::SetPosition(glm::vec3 newPosition)
 {
-    Position = newPosition;
+    _CameraPosition = newPosition;
 }
-glm::mat4 Camera::LookAt(glm::vec3 PositionToLookAt)
+void Camera::LookAt(glm::vec3 PositionToLookAt)
 {
-    return glm::lookAt(Position, PositionToLookAt, WorldUp);
+    _CameraMatrix = glm::lookAt(_CameraPosition, PositionToLookAt, WorldUp);
 }
 void Camera::SetRotation(glm::quat NewQuaternion)
 {
-    Rotation = NewQuaternion;
+    _CameraRotation = NewQuaternion;
 }
 glm::quat Camera::EulerToQuaternion(glm::vec3 Euler)
 {

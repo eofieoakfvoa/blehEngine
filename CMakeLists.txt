@@ -1,6 +1,21 @@
-cmake_minimum_required(VERSION "3.19")
+# cmake_minimum_required(VERSION "3.19")
+# project("blehEngine")
 
-project("BlehEngine")
+# add_subdirectory(src)
+# add_subdirectory(gameProject)
+
+
+
+
+
+
+# TEMPORÄR DEN HÄR ÄR DÅLIG ANVÄND ANDRA OCH FIXA TILL DEN NÄR JAG HAR SEPERERAT UT SPELET FRÅN ENGINEN
+cmake_minimum_required(VERSION 4.2)
+project("BlehEngine" VERSION 1.0 
+                    LANGUAGES C CXX)
+
+set(CMAKE_CXX_STANDARD 23)
+
 
 add_subdirectory(vendors/glm)
 add_subdirectory(vendors/glfw-3.4)
@@ -24,3 +39,4 @@ target_include_directories("BlehEngine" PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src
 target_include_directories("BlehEngine" PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/vendors/glfw-3.4/include")
 target_link_libraries("BlehEngine" PRIVATE glm)
 target_link_libraries("BlehEngine" PRIVATE glfw)
+target_link_libraries("BlehEngine" PRIVATE stdc++exp)

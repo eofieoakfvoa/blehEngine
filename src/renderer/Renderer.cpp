@@ -23,15 +23,19 @@ void Renderer::RenderFrame()
     float timeValue = glfwGetTime();
     float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
     glUseProgram(shaderID);
-    glm::mat4 model         = glm::mat4(1.0f);
-    glm::mat4 view          = glm::mat4(1.0f);
-    glm::mat4 projection    = glm::mat4(1.0f);
-    model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f)); 
+    
+    glm::mat4 model, view, projection;
+    model = view = projection = glm::mat4(1.0f);
 
-    view = currentCamera->LookAt(currentCamera->GetPosition() + currentCamera->CameraFront);
-    projection = glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f);
+    model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f)); 
+    view = currentCamera->GetCameraMatrix();
+    projection = currentCamera->GetProjectionMatrix(); //finns ingen anledning att få denna varje frame, där den basically bara kommer ändras när skärmen resizar
+
+
+
     unsigned int modelLoc = glGetUniformLocation(shaderID, "model");
     unsigned int viewLoc  = glGetUniformLocation(shaderID, "view");
+
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
     glUniformMatrix4fv(glGetUniformLocation(shaderID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
@@ -39,11 +43,11 @@ void Renderer::RenderFrame()
 
     glUniform4f(UniformLocation, 0.0f, greenValue, 0.8f, 0.8f);
     glUniform1i(glGetUniformLocation(shaderID, "texture1"), 0);
-    glUniform1i(glGetUniformLocation(shaderID, "texture2"), 1); //hello
+    glUniform1i(glGetUniformLocation(shaderID, "texture2"), 1);
 
 }
 
-void Renderer::SetCurrentCamera(Camera* cameraToBeSet)
+void Renderer::SetCurrentCamera(Camera* cameraToBeSet) //borde probably ha en lista eller något ifall det finns flera kameror
 {
     currentCamera = cameraToBeSet;
 }

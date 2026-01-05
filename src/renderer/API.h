@@ -1,0 +1,1 @@
+//vulkan eller opengl eller ksk directx ser i framtiden om typ 50 million years

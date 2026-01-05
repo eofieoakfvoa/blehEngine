@@ -7,7 +7,7 @@
 #include <stb_image.h>
 #include <print>
 
-
+#include "Services/AssetLoader.h"
 #include "blehEngine.h"
 #include "renderer/Renderer.h"
 #include "renderer/Buffers.h"
@@ -136,6 +136,10 @@ void blehEngine::Initialize()
     VertexBufferObject VBO(vertices, sizeof(vertices)); // automate // vertex size * rows * sizeof(float)
     ElementBufferObject EBO(indices, sizeof(indices));
 
+    // Texture texture1("engineResources/Textures/container.jpg"), texture2("engineResources/Textures/cc12.jpg");
+    // Shader shader;
+    // ShaderProgramSource Source = shader.ParseShader("engineResources/shaders/defaultShader.shader");
+
     Texture texture1(ResourcePath"Textures/container.jpg"), texture2(ResourcePath"Textures/cc12.jpg");
     Shader shader;
     ShaderProgramSource Source = shader.ParseShader(ResourcePath"shaders/defaultShader.shader");
@@ -154,11 +158,9 @@ void blehEngine::Initialize()
     renderer.SetCurrentCamera(&camera);
     InputService InputSystem(Window);
     
+    AssetLoader aLoader;
+    aLoader.LoadAsset(ResourcePath"temp/newcube.gltf");
     
-    
-    // InputSystem.SubscribeToEvent([&camera](KeyAction action, int key) {
-    //     blehMath::vector3 cameraposition = camera.GetPosition();
-    //     float cameraspeed = 0.5f;
 
     GameLoop(renderer, texture1, texture2, InputSystem, camera);
     glfwDestroyWindow(Window);
@@ -176,7 +178,6 @@ void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2,
         blehMath::vector3 cameraposition = camera.GetPosition();
         if (inputsystem.GetKeyDown(Bleh::Key::W))
         {
-            std::cout << "W was pressed\n";
             cameraposition = blehMath::vector3(cameraposition.x, cameraposition.y, cameraposition.z - 0.0005f); //fps dependent på hastigheten
             camera.SetPosition(cameraposition);
         }
@@ -201,7 +202,7 @@ void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2,
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         texture1.SetActive(GL_TEXTURE0);
         texture2.SetActive(GL_TEXTURE1);
-        
+        camera.LookAt(camera.GetPosition() + camera.CameraFront); 
         renderer.RenderFrame();
         // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr); // automate
