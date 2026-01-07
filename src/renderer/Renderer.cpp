@@ -19,35 +19,34 @@ Renderer::~Renderer()
 
 void Renderer::RenderFrame()
 {
-    
-    float timeValue = glfwGetTime();
-    float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+
     glUseProgram(shaderID);
+
+
+    glm::mat4 view = currentCamera->GetCameraMatrix();
+    glm::mat4 projection = currentCamera->GetProjectionMatrix(); // finns ingen anledning att få denna varje frame, där den basically bara kommer ändras när skärmen resizar
+    unsigned int viewLocation = glGetUniformLocation(shaderID, "view");
+    unsigned int projectionLocation = glGetUniformLocation(shaderID, "projection");
+    glUniformMatrix4fv(viewLocation, 1, GL_FALSE, &view[0][0]);
+    glUniformMatrix4fv(projectionLocation, 1, GL_FALSE, glm::value_ptr(projection));
     
-    glm::mat4 model, view, projection;
-    model = view = projection = glm::mat4(1.0f);
-
-    model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f)); 
-    view = currentCamera->GetCameraMatrix();
-    projection = currentCamera->GetProjectionMatrix(); //finns ingen anledning att få denna varje frame, där den basically bara kommer ändras när skärmen resizar
-
-
-
-    unsigned int modelLoc = glGetUniformLocation(shaderID, "model");
-    unsigned int viewLoc  = glGetUniformLocation(shaderID, "view");
-
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-    glUniformMatrix4fv(glGetUniformLocation(shaderID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-
-
-    glUniform4f(UniformLocation, 0.0f, greenValue, 0.8f, 0.8f);
+    
     glUniform1i(glGetUniformLocation(shaderID, "texture1"), 0);
     glUniform1i(glGetUniformLocation(shaderID, "texture2"), 1);
 
+    for (Mesh& mesh : _Meshes)
+    {
+        mesh.Bind();
+
+        unsigned int modelLocation = glGetUniformLocation(shaderID, "model");
+        glUniformMatrix4fv(modelLocation, 1, GL_FALSE, glm::value_ptr(mesh.GetModelMatrix()));
+        glDrawElements(GL_TRIANGLES, mesh.GetIndexCount() , mesh.GetIndexType(), nullptr);
+
+    }
+
 }
 
-void Renderer::SetCurrentCamera(Camera* cameraToBeSet) //borde probably ha en lista eller något ifall det finns flera kameror
+void Renderer::SetCurrentCamera(Camera *cameraToBeSet) // borde probably ha en lista eller något ifall det finns flera kameror
 {
     currentCamera = cameraToBeSet;
 }
@@ -56,3 +55,8 @@ Camera &Renderer::GetCurrentCamera()
 {
     return *currentCamera;
 }
+
+void Renderer::AddMesh(Mesh& mesh)
+{
+    _Meshes.emplace_back(mesh);
+} 

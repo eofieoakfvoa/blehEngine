@@ -33,4 +33,5 @@
 
 # Build files :3
 build/*
+.cache/*
 !build/build.xml

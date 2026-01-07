@@ -1,1 +1,0 @@
-//ufbx och gltf2 filer tror jag

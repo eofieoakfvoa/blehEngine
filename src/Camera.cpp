@@ -1,7 +1,7 @@
 #include "Camera.h"
 
 Camera::Camera(glm::vec3 StartPosition, glm::quat StartRotation)
-    : _CameraPosition(StartPosition), _CameraRotation(StartRotation), _ProjectionMatrix(glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f))
+    : _CameraPosition(StartPosition), _CameraRotation(StartRotation), _ProjectionMatrix(glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f)), _CameraMatrix(1.0)
 {
 }
 Camera::~Camera()

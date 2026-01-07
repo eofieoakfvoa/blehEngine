@@ -10,7 +10,7 @@ private:
     void ProcessInput();
     void InitializeGLFW();
     void InitializeGlad();
-    void GameLoop(Renderer renderer, Texture texture1, Texture texture2, InputService& inputservice, Camera& camera);
+    void GameLoop(Renderer& renderer, Texture texture1, Texture texture2, InputService& inputservice, Camera& camera);
 public:
     blehEngine();
     void Initialize();

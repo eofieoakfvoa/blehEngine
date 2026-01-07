@@ -73,15 +73,17 @@ void blehEngine::InitializeGlad()
     glEnable(GL_DEPTH_TEST);
     
 }
+#include "Services/Model.h"
 void blehEngine::Initialize()
 {
     InitializeGLFW();
     InitializeGlad();
-
+    VertexArrayObject VAO;
+    VAO.Bind();
 
 
     // automate
-
+    /* 
     float vertices[] =
         {
             -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
@@ -132,10 +134,10 @@ void blehEngine::Initialize()
             1, 2, 3
         };
     
-    VertexArrayObject VAO;
+
     VertexBufferObject VBO(vertices, sizeof(vertices)); // automate // vertex size * rows * sizeof(float)
     ElementBufferObject EBO(indices, sizeof(indices));
-
+    */
     // Texture texture1("engineResources/Textures/container.jpg"), texture2("engineResources/Textures/cc12.jpg");
     // Shader shader;
     // ShaderProgramSource Source = shader.ParseShader("engineResources/shaders/defaultShader.shader");
@@ -144,12 +146,12 @@ void blehEngine::Initialize()
     Shader shader;
     ShaderProgramSource Source = shader.ParseShader(ResourcePath"shaders/defaultShader.shader");
     unsigned int realshader = shader.CreateShader(Source.VertexSource, Source.FragmentSource);
-
+    /* 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
-
+    */
     Renderer renderer(realshader);
     glUseProgram(realshader);
     shader.setInt("texture1", 0);
@@ -159,22 +161,21 @@ void blehEngine::Initialize()
     InputService InputSystem(Window);
     
     AssetLoader aLoader;
-    aLoader.LoadAsset(ResourcePath"temp/newcube.gltf");
-    
+    Mesh newmesh = aLoader.LoadAsset(ResourcePath"temp/newcube.gltf");
+    newmesh.CreateVertexArray();
+    renderer.AddMesh(newmesh);
 
     GameLoop(renderer, texture1, texture2, InputSystem, camera);
     glfwDestroyWindow(Window);
     glfwTerminate();
 }
 
-void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2, InputService& inputsystem, Camera& camera)
+void blehEngine::GameLoop(Renderer& renderer, Texture texture1, Texture texture2, InputService& inputsystem, Camera& camera)
 {
     while (!glfwWindowShouldClose(Window))
     {
-        // Game Pipeline?
-        // Input
-        // Physics
-        // render Pipeline
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
         blehMath::vector3 cameraposition = camera.GetPosition();
         if (inputsystem.GetKeyDown(Bleh::Key::W))
         {
@@ -197,16 +198,14 @@ void blehEngine::GameLoop(Renderer renderer, Texture texture1, Texture texture2,
             cameraposition = blehMath::vector3(cameraposition.x + 0.0005f, cameraposition.y, cameraposition.z); 
             camera.SetPosition(cameraposition);
         }
-        ProcessInput();
 
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         texture1.SetActive(GL_TEXTURE0);
         texture2.SetActive(GL_TEXTURE1);
         camera.LookAt(camera.GetPosition() + camera.CameraFront); 
+        
         renderer.RenderFrame();
+        
         // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr); // automate
-        glDrawArrays(GL_TRIANGLES, 0, 36);
         glfwSwapBuffers(Window);
         glfwPollEvents();
     }

@@ -1,5 +1,8 @@
 #pragma once
 #include "Camera.h"
+#include "Services/Model.h"
+#include <vector>
+
 enum RendererApiType
 {
     None,
@@ -9,14 +12,16 @@ enum RendererApiType
 
 class Renderer
 {
-private:
-    int UniformLocation;
-    unsigned int shaderID;
-    Camera* currentCamera;
 public:
     Renderer(unsigned int shader);
     ~Renderer();
     void RenderFrame();
     void SetCurrentCamera(Camera* cameraToBeSet);
     Camera& GetCurrentCamera();
+    void AddMesh(Mesh& mesh);
+private:
+    std::vector<Mesh> _Meshes; 
+    int UniformLocation;
+    unsigned int shaderID;
+    Camera* currentCamera;
 };
