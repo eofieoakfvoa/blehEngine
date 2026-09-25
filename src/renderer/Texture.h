@@ -1,19 +1,25 @@
-#include "stb_image.h"
+#pragma once
+
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#pragma once
-class Texture
+#include <filesystem>
+#include "Services/Assets/handle.h"
+namespace bleh
 {
-private:
-    unsigned int _RenderID;
-    int Width;
-    int Height;
-    int nrChannels;
-public:
-    Texture(const std::string &filepath);
-    ~Texture();
-    void SetActive(GLenum textureLocation);
-    unsigned int GetRenderID();
+    class Texture
+    {
+        public:
+            Texture();
+            ~Texture();
+            void SetActive(int slot);
 
-};
+            blehHandle Handle;
+    
+            uint32_t _RenderID;
+            int Width;
+            int Height;
+            int nrChannels;
+
+    };
+}

@@ -3,23 +3,37 @@
 #include "blehMath/blehMath.h"
 #include <glm/glm.hpp>
 #include <glm/gtx/quaternion.hpp>
-enum CameraMode
+#include <Unordered_map>
+namespace bleh
 {
-    NoClip = 1, // fly like kamera
-    LookAt, // kameran är fast en relativ distance från ett object
-    Static // ska bara kunna röra sig en plane, t.ex XY som terraria, och ZX, som core keeper. används t.ex för maps ksk?
-};
-class Camera
-{
+    enum CameraMode
+    {
+        NoClip = 1, // fly like kamera
+        LookAt, // kameran är fast en relativ distance från ett object
+        Static // ska bara kunna röra sig en plane, t.ex XY som terraria, och ZX, som core keeper. används t.ex för maps ksk?
+    };
+    enum class CameraDirection
+    {
+        None = 0,
+        CameraFront,
+        CameraRight,
+        CameraBack,
+        CameraLeft,
+        CameraDown,
+        CameraUp,
+
+    };
+
+    class Camera
+    {
     public:
         Camera(blehMath::vector3 StartPosition, blehMath::quaternion StartRotation);
         ~Camera();
 
-        blehMath::vector3 CameraFront = blehMath::vector3(0.0f, 0.0f, -1.0f);
         blehMath::vector3 const WorldUp = blehMath::vector3(0.0f, 1.0f, 0.0f);
-        //fixa copies
-        inline blehMath::mat4 GetCameraMatrix() const { return _CameraMatrix; } 
-        inline blehMath::mat4 GetProjectionMatrix() const {return _ProjectionMatrix; }
+
+        blehMath::mat4 GetCameraMatrix() const;
+        inline blehMath::mat4 GetProjectionMatrix() const { return _ProjectionMatrix; }
 
         inline blehMath::vector3 GetPosition() const { return _CameraPosition; }
         inline float GetFieldOfView() const { return _FieldOfView; }
@@ -28,21 +42,34 @@ class Camera
 
         void SetPosition(blehMath::vector3 newPosition);
         void SetRotation(blehMath::quaternion NewQuaternion);
-        
+        void SetActive();
 
-        void Move(blehMath::vector3 addedPosition);
+        void Move(CameraDirection direction, float Offset);
         void LookAt(blehMath::vector3 PositionToLookAt);
-        void Rotate(glm::vec4 AddedQuaternion); //vet faktiskt inte ifall jag borde ha en vec4 här, skulle kanske kunna ha function overloading med vec4, quat, vec3(euler)
-        static blehMath::quaternion EulerToQuaternion(blehMath::vector3 Euler);
-    
-        private:
-        float _FieldOfView;
-        float _NearClippingPlane;
-        float _FarClippingPlane;
+        void AddRotate(float degree, glm::vec3 AddedVec3);
+        void Rotate(float deltax, float deltay, float sensitivity);
+        static blehMath::quaternion EulerToQuaternion(blehMath::vector3 Euler); //xd vet inte varför jag la den här borde bara vara blehmath som glm gör HAHAHAH 
+
+    private:
+        void UpdateCameraMatrix();
+        float _FieldOfView = 45.0f;
+        float _NearClippingPlane = 0.1f;
+        float _FarClippingPlane = 10000.0f;
+        float _Yaw = 0;
+        float _Pitch = 0;
+        float _Roll = 0;
+        blehMath::vector3 _CameraRight = blehMath::vector3(1.0f, 0.0f, 0.0f);
+        blehMath::vector3 _CameraUp = blehMath::vector3(0.0f, 1.0f, 0.0f);
+        blehMath::vector3 _CameraBack = blehMath::vector3(0.0f, 0.0f, 1.0f);
+        blehMath::vector3 _CameraFront = blehMath::vector3(0.0f, 0.0f, -1.0f);
+        blehMath::vector3 _CameraDown = blehMath::vector3(0.0f, -1.0f, 0.0f);
+        blehMath::vector3 _CameraLeft = blehMath::vector3(-1.0f, 0.0f, 0.0f);
 
         blehMath::mat4 _CameraMatrix;
-        blehMath::mat4 _ProjectionMatrix; //fixa så det här inte är hard coded, och resizar med skärmen
+        blehMath::mat4 _ProjectionMatrix;
         blehMath::vector3 _CameraPosition;
-        blehMath::quaternion _CameraRotation; //Quaternion
+        blehMath::quaternion _CameraRotation;
         CameraMode CameraType = CameraMode::NoClip;
-};
+        blehMath::vector3* _CameraDirections[7]; //idk bro kanske borde vara unique pointer så det försvinner, eller switch case ifall det är snabbare man idk 
+    };
+}

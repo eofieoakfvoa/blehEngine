@@ -1,148 +1,138 @@
-#include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <stb_image.h>
 #include <print>
+#include <cstdint>
+#include <memory>
 
-#include "Services/AssetLoader.h"
 #include "blehEngine.h"
 #include "renderer/Renderer.h"
-#include "renderer/Buffers.h"
 #include "renderer/Shader.h"
 #include "renderer/VertexArrayObject.h"
-#include "renderer/Texture.h"
 #include "Services/InputService.h"
-#include "Camera.h"
-#include "blehMath/blehMath.h"
+#include "errorReporting.h"
+#include "Services/BlehKeys.h"
+#include "Services/blehServices.h"
 
-int main()
+
+//void* operator new(size_t size)
+//{
+//    std::println("Allocating : {} Bytes", size);
+//    return malloc(size);
+//}
+//void operator delete(void* memory,size_t size)
+//{
+//    std::println("freeing : {} Bytes", size);
+//    free(memory);
+//}
+
+namespace bleh
 {
-    blehEngine bleh;
-    bleh.Initialize();
-    return 0;
-}
 
 
-using std::cout;
-using std::endl;
-//En thread för varje subsystem av programmet, så mainthread är main loop. animation thread dynamics thread rendering thread network thread-
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height)
-{
-    glViewport(0, 0, width, height);
-}
-
-blehEngine::blehEngine()
-{
-}
-
-void blehEngine::ProcessInput()
-{
-}
-
-void blehEngine::InitializeGLFW()
-{
-    if (!glfwInit())
+    void blehEngine::Initialize()
     {
-        cout << "Failed to initialize GLFW" << endl;
-        return;
-    }
-    glfwWindowHint(GLFW_SAMPLES, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, 1);
-    Window = glfwCreateWindow(800, 600, "blehEngine", NULL, NULL);
-    glfwMakeContextCurrent(Window);
-    glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
-    // return Window
-}
-void blehEngine::InitializeGlad()
-{
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        cout << "Failed to initialize GLAD" << endl;
+        if (!glfwInit())
+        {
+            std::println("Failed to initialize GLFW");
+            return;
+        }
+
+
+        _WindowManager = std::make_unique<WindowManager>();
+        uint8_t windowHandle;
+        _WindowManager->CreateWindow(WindowSpecifications("blehEngine", WindowSize(800, 600)), windowHandle);
+        uint8_t debugWindowHandle;
+        _WindowManager->CreateWindow(WindowSpecifications("Debug Window", WindowSize(800, 600)), debugWindowHandle, windowHandle);
+
+        //uint8_t debugWindowHandle2;
+        //_WindowManager->CreateWindow(WindowSpecifications("Debug Window2", WindowSize(800, 600)), debugWindowHandle2, windowHandle);
+        _WindowManager->SetActiveWindow(windowHandle);
+
+        //dessa vill jag ha bort
+        _Window = _WindowManager->GetWindowByHandle(0).GetWindow();
+        enableReportGlErrors(); 
+        VertexArrayObject VAO;
+        VAO.Bind();
+        
+
+
+        _Renderer = std::make_unique<Renderer>();
+        _BlehServices = std::make_unique<blehServices>(); 
+        _inputService = std::make_unique<InputService>(_Window); 
+    
+
+
+        //borde va default i manager class ... Alltså att den inte skapas här istället någon annan stans
+        Shader shader;
+        ShaderProgramSource Source = shader.ParseShader(ResourcePath "shaders/defaultShader.shader");
+        uint32_t realshader = shader.CreateShader(Source.VertexSource, Source.FragmentSource);
+        _Renderer->SetShader(realshader);
+        glUseProgram(realshader);
+        shader.setInt("texture1", 0);
+        shader.setInt("texture2", 1);
+    
+
+        //[[-- Helst ska alla sub systems ha en Initialize eftersom jag är fortfarande inte säker ifall de ska vara static eller inte, och ifall jag då gör de till static så är Initialize() och Shutdown bättre än constructor och deconstructor iaf när det var skrivet? --]]
+        _BlehServices->Initialize(*_Renderer, *_inputService);
+        _BlehGame->setBlehServices(*_BlehServices);
+        _BlehGame->Initialize();
+
+        _GameLoop();
+
+        glfwDestroyWindow(_Window);
         glfwTerminate();
-        return;
+
+
+        //beautiful martyr dont u know id do anything for u
     }
-    glEnable(GL_DEBUG_OUTPUT);
-    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-    glEnable(GL_DEPTH_TEST);
-    
-}
-#include "Services/Model.h"
-void blehEngine::Initialize()
-{
-    InitializeGLFW();
-    InitializeGlad();
-    VertexArrayObject VAO;
-    VAO.Bind();
 
-
-
-    Texture texture1(ResourcePath"Textures/container.jpg"), texture2(ResourcePath"Textures/cc12.jpg");
-    Shader shader;
-    ShaderProgramSource Source = shader.ParseShader(ResourcePath"shaders/defaultShader.shader");
-    unsigned int realshader = shader.CreateShader(Source.VertexSource, Source.FragmentSource);
-
-    Renderer renderer(realshader);
-    glUseProgram(realshader);
-    shader.setInt("texture1", 0);
-    shader.setInt("texture2", 1);
-    Camera camera(blehMath::vector3(0.0f,0.0f,0.0f), Camera::EulerToQuaternion(blehMath::vector3(0.0f,0.0f,0.0f)));
-    renderer.SetCurrentCamera(&camera);
-    InputService InputSystem(Window);
-    
-    AssetLoader aLoader;
-    Mesh newmesh = aLoader.LoadAsset(ResourcePath"temp/newcube.gltf");
-    newmesh.CreateVertexArray();
-    renderer.AddMesh(newmesh);
-
-    GameLoop(renderer, texture1, texture2, InputSystem, camera);
-    glfwDestroyWindow(Window);
-    glfwTerminate();
-}
-
-void blehEngine::GameLoop(Renderer& renderer, Texture texture1, Texture texture2, InputService& inputsystem, Camera& camera)
-{
-    while (!glfwWindowShouldClose(Window))
+    void blehEngine::_GameLoop()
     {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        while (!glfwWindowShouldClose(_Window))
+        {
 
-        blehMath::vector3 cameraposition = camera.GetPosition();
-        if (inputsystem.GetKeyDown(Bleh::Key::W))
-        {
-            cameraposition = blehMath::vector3(cameraposition.x, cameraposition.y, cameraposition.z - 0.0005f); //fps dependent på hastigheten
-            camera.SetPosition(cameraposition);
-        }
-        if (inputsystem.GetKeyDown(Bleh::Key::A))
-        {
-            cameraposition = blehMath::vector3(cameraposition.x - 0.0005f, cameraposition.y, cameraposition.z); 
-            camera.SetPosition(cameraposition);
-    
-        }
-        if (inputsystem.GetKeyDown(Bleh::Key::S))
-        {
-            cameraposition = blehMath::vector3(cameraposition.x, cameraposition.y, cameraposition.z + 0.0005f); 
-            camera.SetPosition(cameraposition);
-        }
-        if (inputsystem.GetKeyDown(Bleh::Key::D))
-        {
-            cameraposition = blehMath::vector3(cameraposition.x + 0.0005f, cameraposition.y, cameraposition.z); 
-            camera.SetPosition(cameraposition);
-        }
+            glfwPollEvents();
 
-        texture1.SetActive(GL_TEXTURE0);
-        texture2.SetActive(GL_TEXTURE1);
-        camera.LookAt(camera.GetPosition() + camera.CameraFront); 
-        
-        renderer.RenderFrame();
-        
-        // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glfwSwapBuffers(Window);
-        glfwPollEvents();
+            _BlehGame->OnUpdate();  
+
+            //per window
+            int i = 1;
+            for (Window& currentWindow : _WindowManager->GetAllWindows())
+            {
+                std::println("{}", i);
+                i++;
+                GLFWwindow* windowInstance = currentWindow.GetWindow();
+                glfwMakeContextCurrent(windowInstance);
+                
+                
+                if (_inputService->GetKeyDown(bleh::Key::ESCAPE)) //kanske inom window eller inputservice och borde använda engine kod med subscribe istället för getkeydown
+                {
+                    glfwSetInputMode(windowInstance, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
+                }
+                if (_inputService->GetInputClick(bleh::Key::Mouse_Left))
+                {
+                    glfwSetInputMode(windowInstance, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+                }
+
+                if (_inputService->GetInputClick(bleh::Key::X))
+                {
+                    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+                }
+ 
+
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                
+                _Renderer->RenderFrame();
+
+                glfwSwapBuffers(windowInstance);
+
+            }
+
+
+        }
     }
 }
+

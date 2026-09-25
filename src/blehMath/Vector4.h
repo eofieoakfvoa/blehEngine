@@ -1,6 +1,6 @@
 #pragma once
 #include "blehMath.h"
-namespace blehMath
+namespace bleh::blehMath
 {
     class vector4 //skulle highkey ba kunna vara en struct eftersom ända skillnaden är att det är public by default
     {

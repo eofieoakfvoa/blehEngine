@@ -1,7 +1,7 @@
 #pragma once
 #include "blehMath.h"
 
-namespace blehMath
+namespace bleh::blehMath
 {
 #ifdef CUSTOM_MATH
 

@@ -1,27 +1,32 @@
 #pragma once
 #include "Camera.h"
-#include "Services/Model.h"
+#include "Services/Assets/Model.h"
 #include <vector>
-
-enum RendererApiType
+#include <memory>
+namespace bleh
 {
-    None,
-    OpenGL,
-    Vulkan,
-};
+class AssetManager;
+    
+    class Renderer
+    {
+        public:
+            Renderer();
+            ~Renderer();
+    
+            void RenderFrame(); 
+            void AddMesh(std::shared_ptr<Mesh> mesh);
+    
+            void SetShader(uint32_t shader);
+            void SetCurrentCamera(Camera* cameraToBeSet);
+            Camera& GetCurrentCamera();
+            std::weak_ptr<AssetManager> assetmanager;
+        
+        private:
 
-class Renderer
-{
-public:
-    Renderer(unsigned int shader);
-    ~Renderer();
-    void RenderFrame();
-    void SetCurrentCamera(Camera* cameraToBeSet);
-    Camera& GetCurrentCamera();
-    void AddMesh(Mesh& mesh);
-private:
-    std::vector<Mesh> _Meshes; 
-    int UniformLocation;
-    unsigned int shaderID;
-    Camera* currentCamera;
-};
+            int _UniformLocation; //tror varje window ska ha en renderer själv, så kan jag typ göra så renderer kan vara specifikt för ui för debugging
+            uint32_t _shaderID;
+
+            Camera* _currentCamera = nullptr;
+            std::vector<std::shared_ptr<Mesh>> _Meshes;
+    };
+}

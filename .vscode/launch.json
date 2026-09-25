@@ -5,7 +5,7 @@
             "name": "Launch Program",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/blehEngine.exe",
+            "program": "${workspaceFolder}/coolgame.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}", 

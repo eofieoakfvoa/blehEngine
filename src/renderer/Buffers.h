@@ -1,30 +1,45 @@
 #pragma once
 #include "glad\glad.h"
-#include <Services/gltfinformation.h>
-class VertexBufferObject
+#include <Services/Assets/gltfinformation.h>
+namespace bleh
 {
-private:
-    unsigned int _rendererID;
+    class VertexBufferObject
+    {
 
-public:
-    VertexBufferObject();
-    VertexBufferObject(float* vertices, unsigned int Size);
-    ~VertexBufferObject();
-    void Bind();
-    void AddData(char* buffer, int offset, int length);
-    void AllocateEmpty(int buffersize); //detta är probably jätte dummt idk men vill pröva, jag är rädd, borde nog garantera att den är empty innan också
-};
+        private:
+            unsigned int _rendererID;
 
-class ElementBufferObject
-{
-private:
-    unsigned int _rendererID;
+        public:
+            VertexBufferObject();
+            VertexBufferObject(float* vertices, unsigned int Size);
+            ~VertexBufferObject();
+            VertexBufferObject(const VertexBufferObject&) = delete;
+            VertexBufferObject& operator=(const VertexBufferObject&) = delete;
+            void Bind();
+            void AddData(char* buffer, int offset, int length);
+            void Allocate(int buffersize); //detta är probably jätte dummt idk men vill pröva, jag är rädd, borde nog garantera att den är empty innan också
+            void Allocate(int buffersize, const void* Data);
+            unsigned int GetID();
 
-public:
-    ElementBufferObject();
-    ElementBufferObject(unsigned int* Indices, unsigned int Size);
-    ~ElementBufferObject();
-    void Bind();
-    void AllocateEmpty(int buffersize);
-    void AddData(char* buffer, int Offset, int Length);
-};
+    };
+
+    class ElementBufferObject
+    {
+
+        private:
+            unsigned int _rendererID;
+
+        public:
+            ElementBufferObject();
+            ElementBufferObject(unsigned int* Indices, unsigned int Size);
+            ~ElementBufferObject();
+            ElementBufferObject(const ElementBufferObject&) = delete;
+            ElementBufferObject& operator=(const ElementBufferObject&) = delete;
+            void Bind();
+            void Allocate(int buffersize);
+            void Allocate(int buffersize, const void* Data);
+            void AddData(char* buffer, int Offset, int Length);
+            unsigned int GetID();
+
+    };
+}

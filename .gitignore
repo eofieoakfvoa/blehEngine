@@ -7,6 +7,36 @@
 *.o
 *.obj
 
+# Build output
+build/
+out/
+build/*
+.cache/*
+*.env
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CMakeUserPresets.json
+CMakePresets.json
+
+
+# Visual Studio
+.vs/
+*.suo
+*.pdb
+*.ilk
+
+#extensions
+*.cppcheck
+*.scor
+compileData.scor.gbl
+compileData.scor.t0000
+
+CompileScoreSettings.json
+
+
 # Precompiled Headers
 *.gch
 *.pch
@@ -31,7 +61,3 @@
 *.out
 *.app
 
-# Build files :3
-build/*
-.cache/*
-!build/build.xml

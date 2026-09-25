@@ -1,12 +1,19 @@
 #pragma once
-#include "Buffers.h"
-class VertexArrayObject
+#include "glad\glad.h"
+namespace bleh
 {
-    public:
-        VertexArrayObject();
-        ~VertexArrayObject();
-        void Bind();
-    private:
-        unsigned int _RendererID;
+    class VertexArrayObject
+    {
+        public:
+            VertexArrayObject();
+            ~VertexArrayObject();
+            //VertexArrayObject(const VertexArrayObject&) = delete;
+            //VertexArrayObject& operator=(const VertexArrayObject&) = delete;
+            void Generate();
+            void Bind();
+            unsigned int GetID();
+        private:
+            unsigned int _RendererID;
 
-};
+    };
+}

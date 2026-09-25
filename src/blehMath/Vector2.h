@@ -1,4 +1,4 @@
-namespace blehMath
+namespace bleh::blehMath
 {
     class vector2
     {

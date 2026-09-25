@@ -1,17 +1,30 @@
 #include "VertexArrayObject.h"
-
-VertexArrayObject::VertexArrayObject()
-    : _RendererID(0)
+namespace bleh
 {
-    glGenVertexArrays(1, &_RendererID);
+    VertexArrayObject::VertexArrayObject()
+        : _RendererID(0)
+    {
+    }
+
+    VertexArrayObject::~VertexArrayObject()
+    {
+   
+        glDeleteVertexArrays(1, &_RendererID);
+    }
+
+    void VertexArrayObject::Generate()
+    {
+            glGenVertexArrays(1, &_RendererID);
+
+    }
+
+    void VertexArrayObject::Bind()
+    {
+        glBindVertexArray(_RendererID); //kolla så den har ett värde
+    }
+    unsigned int VertexArrayObject::GetID()
+    {
+        return _RendererID;
+    }
+
 }
-
-VertexArrayObject::~VertexArrayObject()
-{
-    glDeleteVertexArrays(1, &_RendererID);
-}
-
-void VertexArrayObject::Bind()
-{
-    glBindVertexArray(_RendererID); //kolla så den har ett värde
-} 

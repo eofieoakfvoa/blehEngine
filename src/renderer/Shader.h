@@ -2,23 +2,27 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-struct ShaderProgramSource
+#include <filesystem>
+namespace bleh
 {
-    std::string VertexSource;
-    std::string FragmentSource;
-};
-class Shader
-{
+    struct ShaderProgramSource
+    {
+        std::string VertexSource;
+        std::string FragmentSource;
+    };
+    class Shader
+    {
 
-private:
-    unsigned int _RendererID;
-public:
-    ShaderProgramSource ParseShader(const std::string &filepath);
-    unsigned int CompileShader(const std::string &source, unsigned int type);
-    unsigned int CreateShader(const std::string &vertexshader, const std::string &fragmentshader);
-    void Use() ;
-    void setBool(const std::string &name, bool value) const;
-    void setInt(const std::string &name, int value) const;
-    void setFloat(const std::string &name, float value) const;
-    void setMat4(const std::string &name, const glm::mat4 &mat) const;
-};
+    private:
+        uint32_t _RendererID;
+    public:
+        ShaderProgramSource ParseShader(const std::filesystem::path& filepath);
+        uint32_t CompileShader(const std::string& source, uint32_t type);
+        uint32_t CreateShader(const std::string& vertexshader, const std::string& fragmentshader);
+        void Use() ;
+        void setBool(const std::string& name, bool value) const;
+        void setInt(const std::string& name, int value) const;
+        void setFloat(const std::string& name, float value) const;
+        void setMat4(const std::string& name, const glm::mat4& mat) const;
+    };
+}
