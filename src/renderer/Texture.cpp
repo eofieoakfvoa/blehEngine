@@ -7,8 +7,8 @@ namespace bleh
         
     }
     Texture::~Texture()
-    {
-
+    {   
+        
     }
     void Texture::SetActive(int Slot)
     {

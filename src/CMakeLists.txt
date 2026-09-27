@@ -42,3 +42,7 @@ target_link_libraries(blehEngine PUBLIC
         opengl32
         "-lstdc++exp"
 )
+
+target_precompile_headers(blehEngine PRIVATE
+    "$<$<COMPILE_LANGUAGE:CXX>:blehEnginePCH.h>"
+)

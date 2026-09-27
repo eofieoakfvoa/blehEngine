@@ -12,6 +12,8 @@
 #include "errorReporting.h"
 #include "Services/BlehKeys.h"
 #include "Services/blehServices.h"
+#include "Services/WindowManager.h"
+#include "Services/Window.h"
 
 
 //void* operator new(size_t size)
@@ -42,8 +44,8 @@ namespace bleh
         _WindowManager = std::make_unique<WindowManager>();
         uint8_t windowHandle;
         _WindowManager->CreateWindow(WindowSpecifications("blehEngine", WindowSize(800, 600)), windowHandle);
-        uint8_t debugWindowHandle;
-        _WindowManager->CreateWindow(WindowSpecifications("Debug Window", WindowSize(800, 600)), debugWindowHandle, windowHandle);
+        //uint8_t debugWindowHandle;
+        //_WindowManager->CreateWindow(WindowSpecifications("Debug Window", WindowSize(800, 600)), debugWindowHandle, windowHandle);
 
         //uint8_t debugWindowHandle2;
         //_WindowManager->CreateWindow(WindowSpecifications("Debug Window2", WindowSize(800, 600)), debugWindowHandle2, windowHandle);
@@ -97,11 +99,12 @@ namespace bleh
             _BlehGame->OnUpdate();  
 
             //per window
-            int i = 1;
+            //int i = 1;
             for (Window& currentWindow : _WindowManager->GetAllWindows())
             {
-                std::println("{}", i);
+                /*std::println("{}", i);
                 i++;
+                */
                 GLFWwindow* windowInstance = currentWindow.GetWindow();
                 glfwMakeContextCurrent(windowInstance);
                 

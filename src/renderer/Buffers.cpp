@@ -1,54 +1,51 @@
 #include "Buffers.h"
 #include <print>
+#include <cstdint>
 namespace bleh
 {
     VertexBufferObject::VertexBufferObject()
-        : _rendererID(0)
+        : _RenderHandle(0)
     {
-        glGenBuffers(1, &_rendererID);
-        std::println("Created VBO {}", _rendererID);
+        glCreateBuffers(1, &_RenderHandle);
+        std::println("Created VBO {}", _RenderHandle);
     }
 
-    VertexBufferObject::VertexBufferObject(float* vertices, unsigned int Size)
-        : _rendererID(0)
+    VertexBufferObject::VertexBufferObject(float* vertices, uint_fast32_t Size)
+        : _RenderHandle(0)
     {
-        glGenBuffers(1, &_rendererID);
-        glBindBuffer(GL_ARRAY_BUFFER, _rendererID);
-        glBufferData(GL_ARRAY_BUFFER, Size, vertices, GL_STATIC_DRAW);
+        glCreateBuffers(1, &_RenderHandle);
+        glNamedBufferStorage(_RenderHandle, Size, vertices, 0);
     }
 
     VertexBufferObject::~VertexBufferObject()
     {
-        glDeleteBuffers(1, &_rendererID);
+        glDeleteBuffers(1, &_RenderHandle);
     }
 
     void VertexBufferObject::Bind()
     {
-        glBindBuffer(GL_ARRAY_BUFFER, _rendererID);
+        glBindBuffer(GL_ARRAY_BUFFER, _RenderHandle);
     }
 
     void VertexBufferObject::AddData(char* buffer, int offset, int length)
     {
-        Bind();
-        glBufferSubData(GL_ARRAY_BUFFER, offset, length, buffer);
+        glNamedBufferSubData(GL_ARRAY_BUFFER, offset, length, buffer);
     }
 
     void VertexBufferObject::Allocate(int buffersize)
     {
-        Bind();
-        glBufferData(GL_ARRAY_BUFFER, buffersize, NULL, GL_STATIC_DRAW);
+        glNamedBufferData(_RenderHandle, buffersize, NULL, GL_STATIC_DRAW);
     }
 
 
     void VertexBufferObject::Allocate(int buffersize, const void* data)
     {
-        Bind();
-        glBufferData(GL_ARRAY_BUFFER, buffersize, data, GL_STATIC_DRAW);
+        glNamedBufferData(_RenderHandle, buffersize, data, GL_STATIC_DRAW);
     }
 
-    unsigned int VertexBufferObject::GetID()
+    unsigned int VertexBufferObject::GetHandle()
     {
-        return _rendererID;
+        return _RenderHandle;
     }
 
 
@@ -60,47 +57,71 @@ namespace bleh
 
 
     ElementBufferObject::ElementBufferObject()
-        : _rendererID(0)
+        : _RenderHandle(0)
     {
-        glGenBuffers(1, &_rendererID);
+        glCreateBuffers(1, &_RenderHandle);
     }
 
-    ElementBufferObject::ElementBufferObject(unsigned int* Indices, unsigned int Size)
-        : _rendererID(0)
+    ElementBufferObject::ElementBufferObject(uint32_t* Indices, uint32_t Size)
+        : _RenderHandle(0)
     {
-        glGenBuffers(1, &_rendererID);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _rendererID);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, Size, Indices, GL_STATIC_DRAW);
+        glCreateBuffers(1, &_RenderHandle);
+        glNamedBufferStorage(_RenderHandle, Size, Indices, 0);
     }
 
     ElementBufferObject::~ElementBufferObject()
     {
-        glDeleteBuffers(1, &_rendererID);
+        glDeleteBuffers(1, &_RenderHandle);
     }
     void ElementBufferObject::Bind()
     {
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _rendererID);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _RenderHandle);
     }
 
     void ElementBufferObject::Allocate(int buffersize)
     {
-        Bind();
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, buffersize, NULL, GL_STATIC_DRAW);
+        glNamedBufferData(_RenderHandle, buffersize, NULL, GL_STATIC_DRAW);
     }
 
     void ElementBufferObject::Allocate(int buffersize, const void* data)
     {
-        Bind();
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, buffersize, data, GL_STATIC_DRAW);
+        glNamedBufferData(_RenderHandle, buffersize, data, GL_STATIC_DRAW);
     }
 
     void ElementBufferObject::AddData(char* buffer, int offset, int length)
     {
-        Bind();
-        glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, offset, length, buffer);
+        glNamedBufferSubData(_RenderHandle, offset, length, buffer);
     }
-    unsigned int ElementBufferObject::GetID()
+    unsigned int ElementBufferObject::GetHandle()
     {
-        return _rendererID;
+        return _RenderHandle;
     }
+
+
+
+
+
+    FrameBufferObject::FrameBufferObject(FrameBufferSpecifications frame)
+    {
+        glCreateFramebuffers(1, &_RenderHandle);
+        
+        glCreateTextures(GL_TEXTURE_2D, 1, &_ColorHandle);
+        glTextureStorage2D(_ColorHandle, 1, GL_RGBA8, frame.Width, frame.Height);
+        glTextureParameteri(_ColorHandle, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTextureParameteri(_ColorHandle, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        glNamedFramebufferTexture(_RenderHandle, GL_COLOR_ATTACHMENT0, _ColorHandle, 0);
+
+        glCreateTextures(GL_TEXTURE_2D, 1, &_DepthHandle);
+        glTextureStorage2D(_DepthHandle, 1, GL_DEPTH24_STENCIL8, frame.Width, frame.Height);
+
+        glNamedFramebufferTexture(_RenderHandle, GL_DEPTH_STENCIL_ATTACHMENT, _DepthHandle, 0);
+
+    }
+
+    void FrameBufferObject::Bind()
+    {
+        glBindFramebuffer(GL_FRAMEBUFFER, _RenderHandle);
+    }
+
 }

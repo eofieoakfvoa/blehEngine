@@ -48,6 +48,7 @@ namespace bleh
                 //                      bufferview.GetByteOffset(), 
                 //                      bufferview.GetByteLength()); //https://stackoverflow.com/questions/3872704/what-is-the-correct-way-to-offset-a-pointer
                 _VertexBuffer.Bind();
+                //https://github.com/fendevel/Guide-to-Modern-OpenGL-Functions#glbuffer modern version av glVertexAttribPointer / https://www.reddit.com/r/opengl/comments/18rkgg3/comment/kf45xvv/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
                 glEnableVertexAttribArray(static_cast<int>(name));
                 glVertexAttribPointer(static_cast<int>(name),
                     accessor.GetVectorSize(accessor.GetType()),

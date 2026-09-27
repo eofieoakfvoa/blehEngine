@@ -48,7 +48,6 @@ namespace bleh
     uint32_t Shader::CompileShader(const std::string& source, uint32_t type)
     {
         uint32_t id = glCreateShader(type);
-        _RendererID = id;
         const char *src = source.c_str();
         glShaderSource(id, 1, &src, nullptr);
         glCompileShader(id);
@@ -74,6 +73,7 @@ namespace bleh
     uint32_t Shader::CreateShader(const std::string& vertexshader, const std::string& fragmentshader)
     {
         uint32_t program = glCreateProgram();
+        _RendererID = program;
         uint32_t vs = CompileShader(vertexshader, GL_VERTEX_SHADER);
 
         uint32_t fs = CompileShader(fragmentshader, GL_FRAGMENT_SHADER);

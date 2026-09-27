@@ -1,5 +1,13 @@
 #include "Window.h"
-#include <print>
+
+//https://discourse.glfw.org/t/making-a-custom-titlebar/2392
+//värkar ba va platform specific
+//#define GLFW_EXPOSE_NATIVE_WIN32
+//#include <GLFW/glfw3.h>
+//#include <GLFW/glfw3native.h>
+//       glfwGetWin32Window();
+
+
 namespace bleh
 {
 
@@ -13,9 +21,9 @@ namespace bleh
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, 1);
-
+        //glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
         _windowInstance = glfwCreateWindow(windowspec.Size.Width, windowspec.Size.Height, windowspec.Title.c_str(), nullptr, ShareContext);
-        
+
         glfwSetFramebufferSizeCallback(_windowInstance, framebuffer_size_callback);
 
         

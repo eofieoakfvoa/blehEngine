@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 #include <Services/Window.h>
 #include <cstdint>

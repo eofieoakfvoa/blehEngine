@@ -8,6 +8,7 @@
 #include "Services/blehServices.h"
 #include "Services/Assets/handle.h"
 #include "renderer/Texture.h"
+#include "renderer/Shader.h"
 namespace bleh
 {
 	class AssetManager
@@ -18,6 +19,7 @@ namespace bleh
 			std::unordered_map<uint64_t, std::shared_ptr<Mesh>> _AssetManager;
 			std::unordered_map<uint64_t, std::shared_ptr<Texture>> _TextureManager;
 			std::unordered_map<uint64_t, std::shared_ptr<gltf::Material>> _MaterialManager;
+			std::unordered_map<uint64_t, std::shared_ptr<Shader>> _ShaderManager;
 			
 			
 			

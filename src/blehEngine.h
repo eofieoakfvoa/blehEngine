@@ -21,6 +21,7 @@ namespace bleh
 
             inline void SetGame(std::unique_ptr<blehGame> game) {  _BlehGame = std::move(game); }
             inline Renderer& GetRenderer() { return *_Renderer; }
+
         
         private:
 
