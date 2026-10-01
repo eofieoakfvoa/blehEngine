@@ -62,7 +62,8 @@ namespace bleh
         public:
             FrameBufferObject(FrameBufferSpecifications);
             void Bind();
-
+            FrameBufferSpecifications Specifications;
+            inline uint32_t GetColorHandle() const { return _ColorHandle; }
         private:
             
             uint32_t _RenderHandle;

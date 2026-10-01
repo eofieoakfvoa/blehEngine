@@ -48,7 +48,7 @@ namespace bleh
     inline void EventDispatcher::Dispatch(T& eevee)
     {
         std::vector<std::function<void(void*)>>& CallbackList = _CallbackMap[std::type_index(typeid(T))]; //gud vilka fel skulle kunda hända här no?, eventpp använder en function som returnar en void ifall den inte existerar
-        for (std::function<void(void*)> Listener : CallbackList) 
+        for (std::function<void(void*)> Listener : CallbackList)
             Listener(&eevee);
     }
 

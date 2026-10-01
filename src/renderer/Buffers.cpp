@@ -102,7 +102,9 @@ namespace bleh
 
 
     FrameBufferObject::FrameBufferObject(FrameBufferSpecifications frame)
+        :Specifications(frame)
     {
+        std::println("creating framebuffer");
         glCreateFramebuffers(1, &_RenderHandle);
         
         glCreateTextures(GL_TEXTURE_2D, 1, &_ColorHandle);

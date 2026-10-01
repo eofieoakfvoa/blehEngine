@@ -2,9 +2,9 @@
 
 class Player
 {
-private:
+	private:
 
-public:
+	public:
 
 };
 

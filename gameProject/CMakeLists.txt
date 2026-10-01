@@ -11,3 +11,5 @@ target_link_libraries(coolgame
         blehEngine
         "-lstdc++exp"
 )
+target_compile_definitions("coolgame" PUBLIC GameResources="${CMAKE_CURRENT_SOURCE_DIR}/GameResources/")
+# #target_compile_definitions("BlehEngine" PUBLIC ResourcePath="./src/res/") tror det ska vara såhär ifall jag ska skicka koden till någon annan

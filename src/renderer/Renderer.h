@@ -6,7 +6,6 @@
 namespace bleh
 {
 class AssetManager;
-    
     class Renderer
     {
         public:
@@ -18,15 +17,18 @@ class AssetManager;
     
             void SetShader(uint32_t shader);
             void SetCurrentCamera(Camera* cameraToBeSet);
+           
             Camera& GetCurrentCamera();
             std::weak_ptr<AssetManager> assetmanager;
-        
+            void SetFallBackTexturetemp(blehHandle texture);
         private:
-
-            int _UniformLocation; //tror varje window ska ha en renderer själv, så kan jag typ göra så renderer kan vara specifikt för ui för debugging
+            void _ScreenPass();
+            int _UniformLocation; 
             uint32_t _shaderID;
-
+            std::vector<FrameBufferObject> FrameBufferStorage;
             Camera* _currentCamera = nullptr;
             std::vector<std::shared_ptr<Mesh>> _Meshes;
+            uint32_t fullscreentriangle;
+            blehHandle _FallbackTexture;
     };
 }

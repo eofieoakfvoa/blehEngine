@@ -97,13 +97,13 @@ void GameManager::Initialize()
     //fixa så AssetManager kan loadar textures + kan ta string overload eller något?
     _AssetManager->setBlehServices(*_blehservices);
 
+
     blehHandle Texture1 = _AssetManager->LoadImage(ResourcePath "Textures/cc12.jpg");
     blehHandle Texture2 = _AssetManager->LoadImage(ResourcePath "Textures/container.jpg");
-    _AssetManager->SetTextureActive(Texture1.UUID, 0);
-    _AssetManager->SetTextureActive(Texture2.UUID, 1);
-
+    _blehservices->GetRenderer().SetFallBackTexturetemp(Texture1);
 	
-
+    //blehHandle meshhandle1 = _AssetManager->LoadMesh(GameResources "newtest/scene.gltf");
+    //_AssetManager->AddToRenderQueue(meshhandle1.UUID);
     blehHandle meshhandle2 = _AssetManager->LoadMesh(ResourcePath "temp/newcube.gltf"); 
     _AssetManager->AddToRenderQueue(meshhandle2.UUID);
 
